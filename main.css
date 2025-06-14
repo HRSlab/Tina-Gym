@@ -1,6 +1,6 @@
 /* ---
 main.css
-Minimal B&W Style for The Movement Queen Gym - FULLY RESPONSIVE
+Minimal B&W Style for The Movement Queen Gym - FULLY RESPONSIVE & CORRECTED
 --- */
 
 /* === 1. Base Reset & Typography === */
@@ -148,9 +148,14 @@ a:hover { color: #555; }
 
 /* Styles for screens smaller than 768px */
 @media (max-width: 767px) {
-    /* Hide desktop nav, show mobile button */
+    /* By default on mobile, the desktop nav list is hidden */
     .main-nav ul {
-        display: none; /* Hide by default */
+        display: none;
+    }
+
+    /* This is the CORRECTED rule. It targets the <ul> inside the <nav> when the <nav> has the .is-open class */
+    .main-nav.is-open ul {
+        display: flex;
         flex-direction: column;
         width: 100%;
         position: absolute;
@@ -160,11 +165,6 @@ a:hover { color: #555; }
         border-bottom: 1px solid var(--color-border);
         box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         padding: 1rem 0;
-    }
-    
-    /* When JS adds this class, the menu appears */
-    .main-nav ul.is-open {
-        display: flex;
     }
 
     .main-nav li {
@@ -178,6 +178,7 @@ a:hover { color: #555; }
         width: 100%;
     }
 
+    /* Show the mobile menu button on small screens */
     .mobile-menu-button {
         display: block;
     }
