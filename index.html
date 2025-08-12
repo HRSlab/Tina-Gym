@@ -1,77 +1,543 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Movement Queen Gym | Fort Mohave, AZ</title>
-    <link rel="stylesheet" href="main.css">
-    <script src="main.js" crossorigin="anonymous"></script>
-</head>
-<body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Form&Function Studio| Fort Mohave, AZ</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 
-    <header class="main-header">
-        <a href="index.html" class="logo">LOGO GYM | Fort Mohave</a>
-    <nav class="main-nav" id="main-nav-menu">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="gallery.html">The Studio</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-    <button class="mobile-menu-button" id="mobile-menu-button" aria-label="Open Menu">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-    </button>
-</header>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B5CF6',
+                        'primary-dark': '#7C3AED',
+                        accent: '#F87171',
+                        light: '#F9FAFB',
+                        'light-alt': '#F3F4F6',
+                        dark: '#1F2937',
+                        muted: '#6B7280',
+                    },
+                    fontFamily: {
+                        display: ['Poppins', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+
+    <style>
+        /* Base styles */
+        body {
+            background-color: #F9FAFB;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+        }
+        
+        /* Header Styles */
+        .main-header {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+        }
+        .main-nav a .underline-anim {
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .main-nav a:hover .underline-anim {
+            transform: scaleX(1);
+        }
+
+        /* Hero Section Styles */
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        #hero-canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            background-color: rgba(249, 250, 251, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            max-width: 90%;
+            width: 700px;
+        }
+        .hero-title {
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            line-height: 1.1;
+        }
+        .hero-title .highlight {
+            color: #8B5CF6; /* --color-primary */
+        }
+        .hero-content p {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin: 1.5rem auto 2rem;
+            max-width: 600px;
+        }
+
+        /* Content Section Styles */
+        .content-section {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        }
+        .bg-light-alt {
+            background-color: #F3F4F6; /* light-alt */
+        }
+        .content-grid {
+            align-items: center;
+        }
+        .content-grid + .content-grid {
+            margin-top: 6rem;
+        }
+        .image-wrapper {
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            aspect-ratio: 4 / 5;
+        }
+        .text-content h2 {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+        }
+        .text-content p {
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .learn-more {
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .studio-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+        .gallery-item {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Footer Styles */
+        .main-footer {
+            background-color: #1F2937; /* dark */
+        }
+        .footer-link {
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Animation Utility Classes */
+        .line-reveal {
+            display: block;
+            overflow: hidden;
+        }
+        .line-reveal > span {
+            display: block;
+            transform: translateY(110%);
+        }
+        .will-animate {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+    </style>
+</head>
+<body class="bg-light font-body">
+
+    <!-- Header Component -->
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 py-5">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="font-display text-2xl font-bold text-dark transition-transform hover:scale-105">
+                Form&Function Studio
+            </a>
+            <nav class="main-nav hidden md:flex items-center space-x-8">
+                <a href="service.html" class="font-medium text-dark relative">
+                    <span>Services</span>
+                    <span class="underline-anim absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span>
+                </a>
+                <a href="about.html" class="font-medium text-dark relative">
+                    <span>About</span>
+                    <span class="underline-anim absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span>
+                </a>
+                <a href="gallery.html" class="font-medium text-dark relative">
+                    <span>The Studio</span>
+                    <span class="underline-anim absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span>
+                </a>
+                <a href="contact.html" class="font-medium text-dark relative">
+                    <span>Contact</span>
+                    <span class="underline-anim absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span>
+                </a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="contact.html" class="hidden md:inline-block bg-primary text-white font-display font-semibold px-5 py-2 rounded-lg hover:bg-primary-dark transition-transform hover:-translate-y-0.5 shadow-sm hover:shadow-lg">
+                    Book a Session
+                </a>
+                <button id="mobile-menu-toggle" class="md:hidden z-50 p-2" aria-label="Toggle Menu">
+                    <div class="w-7 h-7 flex flex-col justify-around">
+                        <span id="bar1" class="block w-full h-0.5 bg-dark rounded-full transition-transform duration-300 ease-in-out"></span>
+                        <span id="bar2" class="block w-full h-0.5 bg-dark rounded-full transition-opacity duration-300 ease-in-out"></span>
+                        <span id="bar3" class="block w-full h-0.5 bg-dark rounded-full transition-transform duration-300 ease-in-out"></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div id="mobile-nav-panel" class="fixed top-0 left-0 w-full h-full bg-light z-40 transform translate-x-full transition-transform duration-300 ease-in-out">
+        <nav class="h-full flex flex-col justify-center items-center space-y-8">
+            <a href="services.html" class="font-display text-3xl text-dark">Services</a>
+            <a href="about.html" class="font-display text-3xl text-dark">About</a>
+            <a href="gallery.html" class="font-display text-3xl text-dark">The Studio</a>
+            <a href="contact.html" class="font-display text-3xl text-dark">Contact</a>
+        </nav>
+    </div>
 
     <main>
+        <!-- Hero Component -->
         <section class="hero">
-            <div class="container">
-                <h1>Strength, Mobility, and Relief in Fort Mohave</h1>
-                <p>Your local studio dedicated to personalized fitness and therapeutic Thai massage. Move better, feel better, live better.</p>
-                <a href="contact.html" class="button button-primary">Book Your Session</a>
+            <div id="hero-canvas-container"></div>
+            <div class="hero-content">
+                <h1 class="hero-title font-display text-dark">
+                    <span class="line-reveal"><span>Strength, Mobility,</span></span>
+                    <span class="line-reveal"><span>and <span class="highlight">Relief.</span></span></span>
+                </h1>
+                <p class="will-animate text-dark">
+                    Your local studio in Fort Mohave dedicated to personalized fitness and therapeutic Thai massage. Move better, feel better, live better.
+                </p>
+                <a href="contact.html" class="will-animate bg-primary text-white font-display font-semibold px-6 py-3 rounded-lg hover:shadow-lg transition-transform hover:-translate-y-0.5">
+                    Book Your Session
+                </a>
             </div>
         </section>
 
-        <section>
-            <div class="container">
-                <div class="grid">
-                    <div class="col col-md-6">
-                        <div class="service-card">
-                            <h3>Personalized Fitness Training</h3>
-                            <p>Go beyond generic workouts.  Our training programs are tailored to your body and your goals, with a special focus on improving mobility, balance, and functional strength for an active life .  Perfect for all ages, including active older adults .</p>
-                            <a href="services.html" class="button">Learn More</a>
-                        </div>
+        <!-- Services Component -->
+        <section class="content-section">
+            <div class="container mx-auto px-6">
+                <div class="content-grid grid md:grid-cols-2 gap-8 md:gap-16">
+                    <div class="image-wrapper will-animate">
+                        <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74?q=80&w=1988&auto=format&fit=crop" alt="Coach assisting a client with a stretch" class="parallax-img">
                     </div>
-                    <div class="col col-md-6">
-                        <div class="service-card">
-                            <h3>Therapeutic Thai Massage</h3>
-                            <p>Our studio is one of the few in Fort Mohave offering an integrated approach to wellness with authentic Thai Massage . Release tension, improve flexibility, and complement your fitness journey with restorative bodywork.</p>
-                            <a href="services.html" class="button">Discover Massage</a>
-                        </div>
+                    <div class="text-content will-animate">
+                        <h2 class="font-display text-dark">Personalized Fitness Training</h2>
+                        <p class="text-muted">Go beyond generic workouts. Our training programs are tailored to your body and your goals, with a special focus on improving mobility, balance, and functional strength for an active life. Perfect for all ages, including active older adults.</p>
+                        <a href="services.html" class="learn-more text-primary hover:text-accent">Learn More →</a>
+                    </div>
+                </div>
+                <div class="content-grid grid md:grid-cols-2 gap-8 md:gap-16">
+                    <div class="image-wrapper will-animate md:order-2">
+                        <img src="https://images.unsplash.com/photo-1591343395082-e120087004b4?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8VGhlcmFwZXV0aWMlMjBUaGFpJTIwTWFzc2FnZXxlbnwwfHwwfHx8MA%3D%3D" alt="Therapeutic massage being performed" class="parallax-img">
+                    </div>
+                    <div class="text-content will-animate md:order-1">
+                        <h2 class="font-display text-dark">Therapeutic Thai Massage</h2>
+                        <p class="text-muted">Our studio is one of the few in Fort Mohave offering an integrated approach to wellness with authentic Thai Massage. Release tension, improve flexibility, and complement your fitness journey with restorative bodywork.</p>
+                        <a href="services.html" class="learn-more text-primary hover:text-accent">Discover Massage →</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section style="background-color: var(--color-background-alt);">
-            <div class="container text-center">
-                <h2>Serving the Fort Mohave Community</h2>
-            <p>We provide a welcoming environment for residents of all walks of life and ages.Whether you are looking to manage chronic pain, prevent falls by improving balance, or simply enhance your quality of life, we have a solution for you.</p>
-                <a href="about.html" class="button">Meet Tina</a>
+        <!-- About Component -->
+        <section class="content-section bg-light-alt">
+            <div class="container mx-auto px-6">
+                 <div class="content-grid grid md:grid-cols-2 gap-8 md:gap-16">
+                    <div class="image-wrapper will-animate">
+                        <img src="https://images.unsplash.com/photo-1642267284519-f137c5efc3c3?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZmVtYWxlJTIwYm9keSUyMGJ1aWxkZXJ8ZW58MHx8MHx8fDA%3D" alt="Authentic headshot of Tina Davis" class="parallax-img">
+                    </div>
+                    <div class="text-content will-animate">
+                        <h2 class="font-display text-dark">Serving the Fort Mohave Community</h2>
+                        <p class="text-muted">We provide a welcoming environment for residents of all walks of life and ages. Whether you are looking to manage chronic pain, prevent falls by improving balance, or simply enhance your quality of life, we have a solution for you.</p>
+                        <a href="about.html" class="bg-accent text-white font-display font-semibold px-8 py-3 rounded-lg hover:shadow-lg transition-transform hover:-translate-y-0.5 inline-block">
+                            Meet Tina
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Studio Component -->
+        <section class="content-section">
+            <div class="container mx-auto px-6">
+                <div class="studio-header">
+                    <h2 class="font-display text-dark will-animate">The Studio</h2>
+                    <p class="text-muted will-animate">A clean, private, and fully equipped space designed for your wellness journey.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="gallery-item will-animate col-span-2 row-span-2">
+                        <img src="https://images.unsplash.com/photo-1602827114685-efbb2717da9f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z3ltJTIwdmlldyUyMHlvZ2ElMjByb29tfGVufDB8fDB8fHww" alt="Studio view with yoga mats and natural light">
+                    </div>
+                    <div class="gallery-item will-animate">
+                        <img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?q=80&w=1974&auto=format&fit=crop" alt="Massage table in a calm and serene room">
+                    </div>
+                    <div class="gallery-item will-animate">
+                        <img src="https://plus.unsplash.com/premium_photo-1664536967994-837be1775112?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8S2V0dGxlYmVsbHMlMjBhbmQlMjBmaXRuZXNzJTIwZXF1aXBtZW50fGVufDB8fDB8fHww" alt="Kettlebells and fitness equipment">
+                    </div>
+                     <div class="gallery-item will-animate col-span-2">
+                        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop" alt="Fitness equipment ready for a workout session">
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="main-footer">
-        <div class="container">
-            <p>&copy; 2025 The Movement Queen Gym | Fort Mohave, AZ</p>
-            <p>5810 STE A-1 South HWY 95, Fort Mohave, AZ</p>
+    <!-- Footer Component -->
+    <footer class="main-footer content-section">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+                <div class="will-animate">
+                    <h3 class="font-display text-2xl text-white">Form&Function Studio</h3>
+                    <p class="text-muted mt-4">&copy; <span id="year"></span> | Fort Mohave, AZ</p>
+                </div>
+                <div class="will-animate">
+                    <h4 class="font-display text-lg text-white">Location</h4>
+                    <address class="text-muted mt-4 not-italic">
+                        5810 STE A-1 South HWY 95<br>Fort Mohave, AZ 86426
+                    </address>
+                </div>
+                <div class="will-animate">
+                    <h4 class="font-display text-lg text-white">Get In Touch</h4>
+                     <a href="mailto:tina@movementqueen.com" class="footer-link text-primary hover:text-accent mt-4 inline-block">tina@movementqueen.com</a>
+                </div>
+            </div>
         </div>
     </footer>
 
+
+    <!-- JS Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script type="importmap">
+        { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.156.1/build/three.module.js" } }
+    </script>
+
+    <!-- Embedded JavaScript -->
+    <script type="module">
+        import * as THREE from 'three';
+
+        // --- HEADER LOGIC ---
+        function initializeHeader() {
+            const header = document.getElementById('main-header');
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileNavPanel = document.getElementById('mobile-nav-panel');
+            const bar1 = document.getElementById('bar1');
+            const bar2 = document.getElementById('bar2');
+            const bar3 = document.getElementById('bar3');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    header.classList.add('bg-light/85', 'backdrop-blur-lg', 'shadow-md', 'py-3');
+                    header.classList.remove('py-5');
+                } else {
+                    header.classList.remove('bg-light/85', 'backdrop-blur-lg', 'shadow-md', 'py-3');
+                    header.classList.add('py-5');
+                }
+            });
+
+            mobileMenuToggle.addEventListener('click', () => {
+                const isMenuOpen = mobileNavPanel.classList.toggle('translate-x-full');
+                
+                bar1.classList.toggle('rotate-45', !isMenuOpen);
+                bar1.classList.toggle('translate-y-[9px]', !isMenuOpen);
+                bar2.classList.toggle('opacity-0', !isMenuOpen);
+                bar3.classList.toggle('-rotate-45', !isMenuOpen);
+                bar3.classList.toggle('-translate-y-[9px]', !isMenuOpen);
+                
+                document.body.style.overflow = isMenuOpen ? '' : 'hidden';
+            });
+
+            mobileNavPanel.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => mobileMenuToggle.click());
+            });
+        }
+
+        // --- ANIMATIONS ---
+        function initializeAnimations() {
+            if (typeof gsap === 'undefined') return;
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Hero Animations
+            const tl = gsap.timeline({ delay: 0.5 });
+            tl.to('.hero-title .line-reveal > span', {
+                y: 0,
+                ease: "power3.out",
+                duration: 1.5,
+                stagger: 0.1,
+            }).to('.hero .will-animate', {
+                opacity: 1,
+                y: 0,
+                ease: "power3.out",
+                duration: 1,
+                stagger: 0.1
+            }, "-=1.2");
+
+            // General Scroll-Triggered Animations
+            const animatedElements = document.querySelectorAll('.will-animate');
+            animatedElements.forEach(el => {
+                if (el.closest('.hero')) return;
+
+                gsap.fromTo(el, { opacity: 0, y: 30 }, {
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 85%",
+                        toggleActions: "play none none none"
+                    },
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: "power3.out",
+                    stagger: 0.1
+                });
+            });
+
+            // Parallax Images
+            const parallaxImages = document.querySelectorAll(".parallax-img");
+            parallaxImages.forEach(img => {
+                const wrapper = img.closest('.image-wrapper');
+                gsap.to(img, {
+                    yPercent: -10,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: wrapper,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: 0.5
+                    }
+                });
+            });
+        }
+
+        // --- HERO 3D BACKGROUND ---
+        function initializeHeroBackground() {
+            const container = document.getElementById('hero-canvas-container');
+            if (!container) return;
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            
+            renderer.setSize(container.offsetWidth, container.offsetHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            container.appendChild(renderer.domElement);
+
+            const loader = new THREE.TextureLoader();
+            const texture = loader.load('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop');
+            
+            const material = new THREE.ShaderMaterial({
+                uniforms: {
+                    uTime: { value: 0 },
+                    uTexture: { value: texture },
+                    uMouse: { value: new THREE.Vector2(0.5, 0.5) }
+                },
+                vertexShader: `
+                    varying vec2 vUv;
+                    void main() {
+                        vUv = uv;
+                        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                    }
+                `,
+                fragmentShader: `
+                    uniform sampler2D uTexture;
+                    uniform float uTime;
+                    uniform vec2 uMouse;
+                    varying vec2 vUv;
+
+                    void main() {
+                        vec2 uv = vUv;
+                        float distance = length(uv - uMouse);
+                        float wave = sin(distance * 15.0 - uTime * 1.5) * 0.03;
+                        uv.x += wave;
+                        uv.y += wave;
+                        gl_FragColor = texture2D(uTexture, uv);
+                    }
+                `
+            });
+
+            const geometry = new THREE.PlaneGeometry(1, 1, 32, 32);
+            const mesh = new THREE.Mesh(geometry, material);
+            scene.add(mesh);
+            camera.position.z = 1;
+
+            const clock = new THREE.Clock();
+            
+            function onResize() {
+                const viewportWidth = container.offsetWidth;
+                const viewportHeight = container.offsetHeight;
+                renderer.setSize(viewportWidth, viewportHeight);
+                camera.aspect = viewportWidth / viewportHeight;
+                camera.updateProjectionMatrix();
+
+                const distance = camera.position.z;
+                const vFov = (camera.fov * Math.PI) / 180;
+                const planeHeight = 2 * Math.tan(vFov / 2) * distance;
+                const planeWidth = planeHeight * camera.aspect;
+
+                mesh.scale.set(planeWidth, planeHeight, 1);
+            }
+            onResize();
+
+            const animate = () => {
+                material.uniforms.uTime.value = clock.getElapsedTime();
+                renderer.render(scene, camera);
+                requestAnimationFrame(animate);
+            };
+            animate();
+
+            window.addEventListener('resize', onResize);
+
+            window.addEventListener('mousemove', (e) => {
+                gsap.to(material.uniforms.uMouse.value, {
+                    x: e.clientX / window.innerWidth,
+                    y: 1.0 - (e.clientY / window.innerHeight),
+                    duration: 1.5,
+                    ease: 'power3.out'
+                });
+            });
+        }
+
+        // --- INITIALIZE EVERYTHING ---
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('year').textContent = new Date().getFullYear();
+            initializeHeader();
+            initializeAnimations();
+            initializeHeroBackground();
+        });
+    </script>
 </body>
 </html>

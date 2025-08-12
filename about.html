@@ -1,64 +1,523 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About | The Movement Queen Gym</title>
-    <link rel="stylesheet" href="main.css">
-    <script src="main.js" crossorigin="anonymous"></script>
-</head>
-<body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Form&Function Studio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 
-    <header class="main-header">
-        <a href="index.html" class="logo">LOGO GYM | Fort Mohave</a>
-    <nav class="main-nav" id="main-nav-menu">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="gallery.html">The Studio</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-    <button class="mobile-menu-button" id="mobile-menu-button" aria-label="Open Menu">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-    </button>
-</header>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B5CF6',
+                        'primary-dark': '#7C3AED',
+                        accent: '#F87171',
+                        light: '#F9FAFB',
+                        'light-alt': '#F3F4F6',
+                        dark: '#1F2937',
+                        'dark-deep': '#111827',
+                        muted: '#6B7280',
+                    },
+                    fontFamily: {
+                        display: ['Poppins', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+
+    <style>
+        /* Base styles */
+        body {
+            background-color: #F9FAFB;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+        }
+        
+        /* Header Styles */
+        .main-header {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+        }
+        .main-nav a .underline-anim {
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .main-nav a:hover .underline-anim {
+            transform: scaleX(1);
+        }
+
+        /* Page Hero Styles */
+        .page-hero {
+            position: relative;
+            height: 60vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background-color: var(--color-light-alt);
+        }
+        #about-hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .page-hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .page-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+        }
+        .page-hero p {
+            font-size: 1.25rem;
+            margin-top: 1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Content Section Styles */
+        .content-section {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        }
+        .content-grid {
+            align-items: center;
+        }
+        .image-wrapper {
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            aspect-ratio: 4 / 5;
+        }
+        .text-content h2 {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+        }
+        .text-content h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+        }
+        .text-content p {
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+        
+        /* New CTA Section Styles */
+        .cta-section {
+            position: relative;
+            padding: 8rem 1.5rem;
+            text-align: center;
+            overflow: hidden;
+            color: var(--color-light);
+        }
+        #cta-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.5;
+        }
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        .cta-content h2 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: white;
+        }
+        .cta-content p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 1rem auto 2.5rem;
+            color: #d1d5db; /* Lighter muted color */
+        }
+        .cta-button {
+            font-size: 1.125rem;
+            padding: 1em 2.5em;
+            border-radius: 0.5em;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 25px -10px rgba(248, 113, 113, 0.4);
+        }
+
+        /* Footer Styles */
+        .footer-link {
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Animation Utility Classes */
+        .line-reveal {
+            display: block;
+            overflow: hidden;
+        }
+        .line-reveal > span {
+            display: block;
+            transform: translateY(110%);
+        }
+        .will-animate {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+    </style>
+</head>
+<body class="bg-light font-body">
+
+    <!-- Header Component -->
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 py-5">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="font-display text-2xl font-bold text-dark transition-transform hover:scale-105">
+                Form&Function Studio
+            </a>
+            <nav class="main-nav hidden md:flex items-center space-x-8">
+                <a href="service.html" class="font-medium text-dark relative"><span>Services</span><span class="underline-anim absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span></a>
+                <a href="about.html" class="font-medium text-dark relative"><span>About</span><span class="underline-anim absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span></a>
+                <a href="gallery.html" class="font-medium text-dark relative"><span>The Studio</span><span class="underline-anim absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span></a>
+                <a href="contact.html" class="font-medium text-dark relative"><span>Contact</span><span class="underline-anim absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span></a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="contact.html" class="hidden md:inline-block bg-primary text-white font-display font-semibold px-5 py-2 rounded-lg hover:bg-primary-dark transition-transform hover:-translate-y-0.5 shadow-sm hover:shadow-lg">
+                    Book a Session
+                </a>
+                <button id="mobile-menu-toggle" class="md:hidden z-50 p-2" aria-label="Toggle Menu">
+                    <div class="w-7 h-7 flex flex-col justify-around">
+                        <span id="bar1" class="block w-full h-0.5 bg-dark rounded-full transition-transform duration-300 ease-in-out"></span>
+                        <span id="bar2" class="block w-full h-0.5 bg-dark rounded-full transition-opacity duration-300 ease-in-out"></span>
+                        <span id="bar3" class="block w-full h-0.5 bg-dark rounded-full transition-transform duration-300 ease-in-out"></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div id="mobile-nav-panel" class="fixed top-0 left-0 w-full h-full bg-light z-40 transform translate-x-full transition-transform duration-300 ease-in-out">
+        <nav class="h-full flex flex-col justify-center items-center space-y-8">
+            <a href="services.html" class="font-display text-3xl text-dark">Services</a>
+            <a href="about.html" class="font-display text-3xl text-dark">About</a>
+            <a href="gallery.html" class="font-display text-3xl text-dark">The Studio</a>
+            <a href="contact.html" class="font-display text-3xl text-dark">Contact</a>
+        </nav>
+    </div>
+
     <main>
-        <section class="hero">
-            <div class="container">
-                <h1>About Tina Davis</h1>
-                <p>A personal approach to wellness, rooted in experience and dedication to our community.</p>
+        <!-- Page Hero Component -->
+        <section class="page-hero">
+            <canvas id="about-hero-canvas"></canvas>
+            <div class="page-hero-content">
+                <h1 class="font-display text-dark">
+                    <span class="line-reveal"><span>About Tina Davis</span></span>
+                </h1>
+                <p class="text-dark font-medium will-animate">
+                    A personal approach to wellness, rooted in experience and dedication to our community.
+                </p>
             </div>
         </section>
 
-        <section>
-            <div class="container">
-                <div class="grid">
-                    <div class="col col-md-6">
-                        <img src="https://placehold.co/600x700/e6e6e6/0a0a0a?text=Tina+Davis" alt="Portrait of Tina Davis" style="width: 100%; height: auto;">
+        <!-- Main Content Component -->
+        <section class="content-section">
+            <div class="container mx-auto px-6">
+                 <div class="content-grid grid md:grid-cols-2 gap-8 md:gap-16">
+                    <div class="image-wrapper will-animate">
+                        <img src="https://images.unsplash.com/photo-1642267284519-f137c5efc3c3?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZmVtYWxlJTIwYm9keSUyMGJ1aWxkZXJ8ZW58MHx8MHx8fDA%3D" alt="Portrait of Tina Davis, founder of Form&Function Studio" class="parallax-img">
                     </div>
-                    <div class="col col-md-6">
-                        <h2>My Philosophy</h2>
-                        <p>My journey into movement and wellness wasn't just professional—it was personal. After navigating my own struggles with depression and feeling "stuck," I discovered the profound power of intentional movement to heal not just the body, but the mind. This experience is the foundation of my coaching.</p>
-                        <p>I believe that everyone has immense strength within them. My role is not just to be a trainer, but to be a guide who helps you uncover that strength. We work together to build resilience, move through challenges, and cultivate a life of joy and vitality.</p>
-                        <h3>Your Fort Mohave Studio</h3>
-                        <p>I established this studio to create a dedicated space for the Fort Mohave community. It’s a place free from intimidation, where personalized attention is the standard. Whether you're a senior looking to improve your balance or an individual seeking relief from chronic pain, you have a home here.</p>
-                        <a href="contact.html" class="button">Get in Touch</a>
+                    <div class="text-content will-animate">
+                        <h2 class="font-display text-dark">My Philosophy</h2>
+                        <p class="text-muted">My journey into movement and wellness wasn't just professional—it was personal. After navigating my own struggles with depression and feeling "stuck," I discovered the profound power of intentional movement to heal not just the body, but the mind. This experience is the foundation of my coaching.</p>
+                        <p class="text-muted">I believe that everyone has immense strength within them. My role is not just to be a trainer, but to be a guide who helps you uncover that strength. We work together to build resilience, move through challenges, and cultivate a life of joy and vitality.</p>
+                        <h3 class="font-display text-dark">Your Fort Mohave Studio</h3>
+                        <p class="text-muted">I established this studio to create a dedicated space for the Fort Mohave community. It’s a place free from intimidation, where personalized attention is the standard. Whether you're a senior looking to improve your balance or an individual seeking relief from chronic pain, you have a home here.</p>
+                        <a href="contact.html" class="bg-primary text-white font-display font-semibold px-8 py-3 rounded-lg hover:shadow-lg transition-transform hover:-translate-y-0.5 inline-block mt-4">
+                            Get in Touch
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- New CTA Section -->
+        <section class="cta-section bg-dark-deep">
+            <canvas id="cta-canvas"></canvas>
+            <div class="cta-content container mx-auto px-6">
+                <h2 class="font-display will-animate">Explore the Philosophy of Movement</h2>
+                <p class="will-animate">Discover more articles, tutorials, and my personal insights on my dedicated wellness platform.</p>
+                <a href="https://www.themovementqueen.com" target="_blank" rel="noopener noreferrer" class="cta-button bg-accent text-white font-display font-semibold inline-block will-animate">
+                    Visit The Movement Queen
+                </a>
+            </div>
+        </section>
     </main>
 
-    <footer class="main-footer">
-        <div class="container">
-            <p>&copy; 2025 The Movement Queen Gym | Fort Mohave, AZ</p>
-            <p>5810 STE A-1 South HWY 95, Fort Mohave, AZ</p>
-        </div>
-    </footer>
+    <!-- Footer Component -->
+    <footer class="main-footer bg-dark content-section py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+                <div class="will-animate">
+                    <h3 class="font-display text-2xl text-white">Form&Function Studio</h3>
+                    <p class="text-muted mt-4">&copy; <span id="year"></span> | Fort Mohave, AZ</p>
+                </div>
+                <div class="will-animate">
+                    <h4 class="font-display text-lg text-white">Location</h4>
+                    <address class="text-muted mt-4 not-italic">
+                        5810 STE A-1 South HWY 95<br>Fort Mohave, AZ 86426
+                    </address>
+                </div>
+                <div class="will-animate">
+                    <h4 class="font-display text-lg text-white">Get In Touch</h4>
+                     <a href="mailto:tina@formandfunction.com" class="footer-link text-primary hover:text-accent mt-4 inline-block">tina@formandfunction.com</a>
+                </div>
+            </div>
+        </footer>
 
+
+    <!-- JS Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script type="importmap">
+        { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.156.1/build/three.module.js" } }
+    </script>
+
+    <!-- Embedded JavaScript -->
+    <script type="module">
+        import * as THREE from 'three';
+
+        // --- HEADER LOGIC ---
+        function initializeHeader() {
+            const header = document.getElementById('main-header');
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileNavPanel = document.getElementById('mobile-nav-panel');
+            const bar1 = document.getElementById('bar1');
+            const bar2 = document.getElementById('bar2');
+            const bar3 = document.getElementById('bar3');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    header.classList.add('bg-light/85', 'backdrop-blur-lg', 'shadow-md', 'py-3');
+                    header.classList.remove('py-5');
+                } else {
+                    header.classList.remove('bg-light/85', 'backdrop-blur-lg', 'shadow-md', 'py-3');
+                    header.classList.add('py-5');
+                }
+            });
+
+            mobileMenuToggle.addEventListener('click', () => {
+                const isMenuOpen = mobileNavPanel.classList.toggle('translate-x-full');
+                bar1.classList.toggle('rotate-45', !isMenuOpen);
+                bar1.classList.toggle('translate-y-[9px]', !isMenuOpen);
+                bar2.classList.toggle('opacity-0', !isMenuOpen);
+                bar3.classList.toggle('-rotate-45', !isMenuOpen);
+                bar3.classList.toggle('-translate-y-[9px]', !isMenuOpen);
+                document.body.style.overflow = isMenuOpen ? '' : 'hidden';
+            });
+
+            mobileNavPanel.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => mobileMenuToggle.click());
+            });
+        }
+
+        // --- ANIMATIONS ---
+        function initializeAnimations() {
+            if (typeof gsap === 'undefined') return;
+            gsap.registerPlugin(ScrollTrigger);
+
+            const tl = gsap.timeline({ delay: 0.3 });
+            tl.to('.page-hero .line-reveal > span', { y: 0, ease: "power3.out", duration: 1.5 })
+              .to('.page-hero .will-animate', { opacity: 1, y: 0, ease: "power3.out", duration: 1 }, "-=1.2");
+
+            const animatedElements = document.querySelectorAll('.will-animate');
+            animatedElements.forEach(el => {
+                if (el.closest('.page-hero')) return;
+                gsap.fromTo(el, { opacity: 0, y: 30 }, {
+                    scrollTrigger: { trigger: el, start: "top 85%", toggleActions: "play none none none" },
+                    opacity: 1, y: 0, duration: 1, ease: "power3.out", stagger: 0.1
+                });
+            });
+
+            const parallaxImages = document.querySelectorAll(".parallax-img");
+            parallaxImages.forEach(img => {
+                const wrapper = img.closest('.image-wrapper');
+                if (wrapper) {
+                    gsap.to(img, {
+                        yPercent: -10, ease: "none",
+                        scrollTrigger: { trigger: wrapper, start: "top bottom", end: "bottom top", scrub: 0.5 }
+                    });
+                }
+            });
+        }
+
+        // --- 3D BACKGROUNDS ---
+        function initialize3D() {
+            // Hero Canvas: Drifting Particles
+            const heroCanvas = document.getElementById('about-hero-canvas');
+            if (heroCanvas) {
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(75, heroCanvas.offsetWidth / heroCanvas.offsetHeight, 0.1, 1000);
+                const renderer = new THREE.WebGLRenderer({ canvas: heroCanvas, alpha: true, antialias: true });
+                renderer.setSize(heroCanvas.offsetWidth, heroCanvas.offsetHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                
+                const count = 200;
+                const positions = new Float32Array(count * 3);
+                for(let i = 0; i < count * 3; i++) { positions[i] = (Math.random() - 0.5) * 10; }
+                const geo = new THREE.BufferGeometry();
+                geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                const mat = new THREE.PointsMaterial({ size: 0.05, color: 0x8B5CF6, transparent: true, opacity: 0.7 });
+                const particles = new THREE.Points(geo, mat);
+                scene.add(particles);
+                camera.position.z = 5;
+
+                const mouse = new THREE.Vector2();
+                window.addEventListener('mousemove', (e) => {
+                    gsap.to(mouse, {
+                        x: (e.clientX / window.innerWidth) * 2 - 1,
+                        y: -(e.clientY / window.innerHeight) * 2 + 1,
+                        duration: 1.5,
+                        ease: 'power3.out'
+                    });
+                });
+
+                const clock = new THREE.Clock();
+                const animate = () => {
+                    const elapsedTime = clock.getElapsedTime();
+                    particles.rotation.y = elapsedTime * 0.05;
+                    particles.position.x += (mouse.x * 0.5 - particles.position.x) * 0.02;
+                    particles.position.y += (mouse.y * 0.5 - particles.position.y) * 0.02;
+                    renderer.render(scene, camera);
+                    requestAnimationFrame(animate);
+                };
+                animate();
+                window.addEventListener('resize', () => {
+                    renderer.setSize(heroCanvas.offsetWidth, heroCanvas.offsetHeight);
+                    camera.aspect = heroCanvas.offsetWidth / heroCanvas.offsetHeight;
+                    camera.updateProjectionMatrix();
+                });
+            }
+
+            // CTA Canvas: Animated Plexus
+            const ctaCanvas = document.getElementById('cta-canvas');
+            if(ctaCanvas) {
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(75, ctaCanvas.offsetWidth / ctaCanvas.offsetHeight, 0.1, 1000);
+                const renderer = new THREE.WebGLRenderer({ canvas: ctaCanvas, alpha: true, antialias: true });
+                renderer.setSize(ctaCanvas.offsetWidth, ctaCanvas.offsetHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                camera.position.z = 250;
+
+                const particleCount = 300;
+                const particles = new THREE.BufferGeometry();
+                const positions = new Float32Array(particleCount * 3);
+                const velocities = new Float32Array(particleCount * 3);
+
+                for (let i = 0; i < particleCount; i++) {
+                    positions[i * 3] = (Math.random() - 0.5) * 500;
+                    positions[i * 3 + 1] = (Math.random() - 0.5) * 500;
+                    positions[i * 3 + 2] = (Math.random() - 0.5) * 500;
+                    velocities[i * 3] = (Math.random() - 0.5) * 0.5;
+                    velocities[i * 3 + 1] = (Math.random() - 0.5) * 0.5;
+                    velocities[i * 3 + 2] = (Math.random() - 0.5) * 0.5;
+                }
+                particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                particles.setAttribute('velocity', new THREE.BufferAttribute(velocities, 3));
+
+                const particleMaterial = new THREE.PointsMaterial({ color: 0x8B5CF6, size: 2, transparent: true, opacity: 0.7 });
+                const particleSystem = new THREE.Points(particles, particleMaterial);
+                scene.add(particleSystem);
+
+                const lineMaterial = new THREE.LineBasicMaterial({ color: 0x8B5CF6, transparent: true, opacity: 0.1 });
+                const lineGeometry = new THREE.BufferGeometry();
+                const linePositions = new Float32Array(particleCount * particleCount * 3);
+                lineGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
+                const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
+                scene.add(lines);
+
+                const mouse = new THREE.Vector2(-100, -100);
+                window.addEventListener('mousemove', (e) => {
+                    gsap.to(mouse, {
+                        x: (e.clientX / window.innerWidth) * 2 - 1,
+                        y: -(e.clientY / window.innerHeight) * 2 + 1,
+                        duration: 1.5,
+                        ease: 'power3.out'
+                    });
+                });
+
+                const animate = () => {
+                    requestAnimationFrame(animate);
+                    const positions = particleSystem.geometry.attributes.position.array;
+                    const velocities = particleSystem.geometry.attributes.velocity.array;
+                    const linePositions = lines.geometry.attributes.position.array;
+                    let vertexpos = 0;
+
+                    for (let i = 0; i < particleCount; i++) {
+                        positions[i * 3] += velocities[i * 3];
+                        positions[i * 3 + 1] += velocities[i * 3 + 1];
+                        if (positions[i * 3 + 1] < -250 || positions[i * 3 + 1] > 250) velocities[i * 3 + 1] *= -1;
+                        if (positions[i * 3] < -250 || positions[i * 3] > 250) velocities[i * 3] *= -1;
+                    }
+
+                    for (let i = 0; i < particleCount; i++) {
+                        for (let j = i + 1; j < particleCount; j++) {
+                            const dx = positions[i * 3] - positions[j * 3];
+                            const dy = positions[i * 3 + 1] - positions[j * 3 + 1];
+                            const dist = Math.sqrt(dx * dx + dy * dy);
+                            if (dist < 40) {
+                                linePositions[vertexpos++] = positions[i * 3];
+                                linePositions[vertexpos++] = positions[i * 3 + 1];
+                                linePositions[vertexpos++] = positions[i * 3 + 2];
+                                linePositions[vertexpos++] = positions[j * 3];
+                                linePositions[vertexpos++] = positions[j * 3 + 1];
+                                linePositions[vertexpos++] = positions[j * 3 + 2];
+                            }
+                        }
+                    }
+                    
+                    camera.position.x += (mouse.x * 50 - camera.position.x) * 0.05;
+                    camera.position.y += (-mouse.y * 50 - camera.position.y) * 0.05;
+                    camera.lookAt(scene.position);
+
+                    lines.geometry.setDrawRange(0, vertexpos / 3);
+                    lines.geometry.attributes.position.needsUpdate = true;
+                    particleSystem.geometry.attributes.position.needsUpdate = true;
+                    renderer.render(scene, camera);
+                };
+                animate();
+
+                window.addEventListener('resize', () => {
+                    renderer.setSize(ctaCanvas.offsetWidth, ctaCanvas.offsetHeight);
+                    camera.aspect = ctaCanvas.offsetWidth / ctaCanvas.offsetHeight;
+                    camera.updateProjectionMatrix();
+                });
+            }
+        }
+
+        // --- INITIALIZE EVERYTHING ---
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('year').textContent = new Date().getFullYear();
+            initializeHeader();
+            initializeAnimations();
+            initialize3D();
+        });
+    </script>
 </body>
 </html>

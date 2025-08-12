@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Services | Form&amp;Function Studio</title>
+
+   
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+
+    <!-- Tailwind CSS -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+
+        tailwind.config = {
+
+            theme: {
+
+                extend: {
+
+                    colors: {
+
+                        primary: '#8B5CF6',
+
+                        'primary-dark': '#7C3AED',
+
+                        accent: '#F87171',
+
+                        light: '#F9FAFB',
+
+                        'light-alt': '#F3F4F6',
+
+                        dark: '#1F2937',
+
+                        'dark-deep': '#111827',
+
+                        muted: '#6B7280',
+
+                    },
+
+                    fontFamily: {
+
+                        display: ['Poppins', 'sans-serif'],
+
+                        body: ['Inter', 'sans-serif'],
+
+                    },
+
+                },
+
+            },
+
+        }
+
+    </script>
+
+
+    <style>
+
+        :root {
+
+            --color-primary: #8B5CF6;
+
+            --color-light: #F9FAFB;
+
+            --color-light-alt: #F3F4F6;
+
+            --color-dark: #1F2937;
+
+            --color-dark-deep: #111827;
+
+            --color-muted: #6B7280;
+
+        }
+
+
+        body {
+
+            background-color: var(--color-light);
+
+            font-family: 'Inter', sans-serif;
+
+            margin: 0;
+
+        }
+
+
+        .main-header {
+
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+
+        }
+
+        .header-on-dark {
+            color: var(--color-light-alt) !important;
+            color:#F3F4F6 !important;
+        }
+
+        .main-header.header-on-dark .logo,
+
+        .main-header.header-on-dark .main-nav a,
+
+        .main-header.header-on-dark .mobile-menu-button span {
+
+            color: var(--color-light) !important;
+
+            background-color: var(--color-light) !important;
+
+        }
+
+
+        .main-header.scrolled .logo,
+
+        .main-header.scrolled .main-nav a,
+
+        .main-header.scrolled .mobile-menu-button span {
+
+            color: var(--color-dark);
+
+            background-color: var(--color-dark);
+
+        }
+
+
+        .main-nav a .underline-anim {
+
+            transform: scaleX(0);
+
+            transform-origin: center;
+
+            transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+
+        }
+
+
+        .main-nav a:hover .underline-anim {
+
+            transform: scaleX(1);
+
+        }
+
+
+        .main-header.header-on-dark .main-nav a .underline-anim {
+
+            background-color: var(--color-light);
+            color: #fafafa !important;
+
+        }
+
+
+        .main-header.scrolled .main-nav a .underline-anim {
+
+             background-color: var(--color-primary);
+
+        }
+
+
+        .page-hero {
+
+            position: relative;
+
+            height: 60vh;
+
+            min-height: 400px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            overflow: hidden;
+            background-color: #111827;
+
+        }
+
+
+        #services-hero-canvas {
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            z-index: 0;
+
+        }
+
+
+        .page-hero-content {
+
+            position: relative;
+
+            z-index: 1;
+
+        }
+
+
+        .page-hero h1 {
+
+            font-size: clamp(2.5rem, 6vw, 4rem);
+
+            color: white;
+
+        }
+
+
+        .page-hero p {
+
+            font-size: 1.25rem;
+
+            margin-top: 1rem;
+
+            max-width: 600px;
+
+            margin-left: auto;
+
+            margin-right: auto;
+
+            color: #d1d5db;
+
+        }
+
+
+        .content-section {
+
+            padding-top: 6rem;
+
+            padding-bottom: 6rem;
+
+        }
+
+
+        .content-section:nth-of-type(even) {
+
+             background-color: var(--color-light-alt);
+
+        }
+
+
+        .image-wrapper {
+
+            border-radius: 1rem;
+
+            overflow: hidden;
+
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+
+        }
+
+
+        .image-wrapper img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            aspect-ratio: 4 / 5;
+
+        }
+
+
+        .text-content h2 {
+
+            font-size: clamp(2rem, 5vw, 2.5rem);
+
+        }
+
+
+        .text-content h3 {
+
+            font-size: 1.5rem;
+
+            margin-top: 2.5rem;
+
+            border-bottom: 2px solid var(--color-primary);
+
+            padding-bottom: 0.5rem;
+
+            display: inline-block;
+
+        }
+
+
+        .text-content p, .text-content ul {
+
+            font-size: 1.1rem;
+
+            margin-top: 1rem;
+
+        }
+
+
+        .text-content ul {
+
+            list-style: none;
+
+            padding: 0;
+
+        }
+
+
+        .text-content li {
+
+            position: relative;
+
+            padding-left: 1.75rem;
+
+            margin-bottom: 0.75rem;
+
+        }
+
+
+        .text-content li::before {
+
+            content: '✓';
+
+            position: absolute;
+
+            left: 0;
+
+            color: var(--color-primary);
+
+            font-weight: 600;
+
+        }
+
+
+        .main-footer {
+
+            background-color: var(--color-dark);
+
+        }
+
+
+        .footer-link {
+
+            text-decoration: none;
+
+            font-weight: 500;
+
+        }
+
+
+        .line-reveal {
+
+            display: block;
+
+            overflow: hidden;
+
+        }
+
+
+        .line-reveal > span {
+
+            display: block;
+
+            transform: translateY(110%);
+
+        }
+
+
+        .will-animate {
+
+            opacity: 0;
+
+            transform: translateY(30px);
+
+        }
+
+    </style>
+
+</head>
+
+<body class="bg-light font-body">
+
+
+    <!-- Header Component -->
+
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 py-5 header-on-dark">
+
+        <div class="container mx-auto px-6 flex justify-between items-center">
+
+            <a href="index.html" class="logo font-display text-2xl font-bold transition-transform hover:scale-105">
+
+                Form&Function Studio
+
+            </a>
+
+            <nav class="main-nav hidden md:flex items-center space-x-8">
+
+                <a href="service.html" class="font-medium relative"><span>Services</span><span class="underline-anim absolute bottom-0 left-0 w-full h-0.5"></span></a>
+
+                <a href="about.html" class="font-medium relative"><span>About</span><span class="underline-anim absolute bottom-0 left-0 w-full h-0.5"></span></a>
+
+                <a href="gallery.html" class="font-medium relative"><span>The Studio</span><span class="underline-anim absolute bottom-0 left-0 w-full h-0.5"></span></a>
+
+                <a href="contact.html" class="font-medium relative"><span>Contact</span><span class="underline-anim absolute bottom-0 left-0 w-full h-0.5"></span></a>
+
+            </nav>
+
+            <div class="flex items-center space-x-4">
+
+                <a href="contact.html" class="hidden md:inline-block bg-primary text-white font-display font-semibold px-5 py-2 rounded-lg hover:bg-primary-dark transition-transform hover:-translate-y-0.5 shadow-sm hover:shadow-lg">
+
+                    Book a Session
+
+                </a>
+
+                <button id="mobile-menu-toggle" class="mobile-menu-button md:hidden z-50 p-2" aria-label="Toggle Menu">
+
+                    <div class="w-7 h-7 flex flex-col justify-around">
+
+                        <span id="bar1" class="block w-full h-0.5 rounded-full transition-transform duration-300 ease-in-out"></span>
+
+                        <span id="bar2" class="block w-full h-0.5 rounded-full transition-opacity duration-300 ease-in-out"></span>
+
+                        <span id="bar3" class="block w-full h-0.5 rounded-full transition-transform duration-300 ease-in-out"></span>
+
+                    </div>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <div id="mobile-nav-panel" class="fixed top-0 left-0 w-full h-full bg-light z-40 transform translate-x-full transition-transform duration-300 ease-in-out">
+
+        <nav class="h-full flex flex-col justify-center items-center space-y-8">
+
+            <a href="service.html" class="font-display text-3xl text-dark">Services</a>
+
+            <a href="about.html" class="font-display text-3xl text-dark">About</a>
+
+            <a href="gallery.html" class="font-display text-3xl text-dark">The Studio</a>
+
+            <a href="contact.html" class="font-display text-3xl text-dark">Contact</a>
+
+        </nav>
+
+    </div>
+
+
+    <main>
+
+        <!-- Page Hero Component -->
+
+        <section class="page-hero">
+
+            <canvas id="services-hero-canvas"></canvas>
+
+            <div class="page-hero-content">
+
+                <h1 class="font-display">
+
+                    <span class="line-reveal"><span>Our Services</span></span>
+
+                </h1>
+
+                <p class="will-animate">
+
+                    Tailored programs designed to build strength, restore mobility, and provide lasting relief.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Service 1: Personalized Training -->
+
+        <section class="content-section">
+
+            <div class="container mx-auto px-6">
+
+                 <div class="content-grid grid md:grid-cols-2 gap-8 md:gap-16">
+
+                    <div class="image-wrapper will-animate">
+
+                        <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74?q=80&w=1988&auto=format&fit=crop" alt="A trainer guides a client through a personalized exercise." class="parallax-img">
+
+                    </div>
+
+                    <div class="text-content will-animate">
+
+                        <h2 class="font-display text-dark">Personalized Fitness Training</h2>
+
+                        <p class="text-muted">Forget one-size-fits-all workouts. Our approach is built entirely around you. We start with a comprehensive assessment to understand your unique goals, movement patterns, and any limitations. From there, we design a program that builds functional strength, improves your balance and coordination, and enhances your mobility for an active, confident life.</p>
+
+                        <h3 class="font-display text-dark">Key Benefits</h3>
+
+                        <ul class="text-muted">
+
+                            <li>Custom-built workout plans that evolve with you.</li>
+
+                            <li>Focus on fall prevention and improving balance.</li>
+
+                            <li>Increased strength for everyday activities.</li>
+
+                            <li>Guidance in a private, non-intimidating environment.</li>
+
+                        </ul>
+
+                        <a href="contact.html" class="bg-primary text-white font-display font-semibold px-8 py-3 rounded-lg hover:shadow-lg transition-transform hover:-translate-y-0.5 inline-block mt-4">
+
+                            Book a Consultation
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Service 2: Thai Massage -->
+
+        <section class="content-section bg-light-alt">
+
+            <div class="container mx-auto px-6">
+
+                 <div class="content-grid grid md:grid-cols-2 gap-8 md:gap-16">
+
+                    <div class="image-wrapper will-animate md:order-2">
+
+                        <img src="https://images.unsplash.com/photo-1591343395082-e120087004b4?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8VGhlcmFwZXV0aWMlMjBUaGFpJTIwTWFzc2FnZXxlbnwwfHwwfHx8MA%3D%3D" alt="A client receiving a therapeutic Thai massage." class="parallax-img">
+
+                    </div>
+
+                    <div class="text-content will-animate md:order-1">
+
+                        <h2 class="font-display text-dark">Therapeutic Thai Massage</h2>
+
+                        <p class="text-muted">More than just a massage, this is a restorative practice designed to release deep-seated tension and improve your body's natural range of motion. By combining acupressure, gentle stretching, and assisted yoga postures, we help to free up tight muscles, alleviate chronic pain, and create a profound sense of relaxation and well-being. It's the perfect complement to your fitness journey.</p>
+
+                        <h3 class="font-display text-dark">Key Benefits</h3>
+
+                        <ul class="text-muted">
+
+                            <li>Relief from chronic pain and muscle stiffness.</li>
+
+                            <li>Improved flexibility and range of motion.</li>
+
+                            <li>Reduced stress and mental fatigue.</li>
+
+                            <li>Accelerated recovery from physical activity.</li>
+
+                        </ul>
+
+                        <a href="contact.html" class="bg-primary text-white font-display font-semibold px-8 py-3 rounded-lg hover:shadow-lg transition-transform hover:-translate-y-0.5 inline-block mt-4">
+
+                            Book a Massage
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer Component -->
+
+    <footer class="main-footer bg-dark content-section py-16">
+
+        <div class="container mx-auto px-6">
+
+            <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+
+                <div class="will-animate">
+
+                    <h3 class="font-display text-2xl text-white">Form&Function Studio</h3>
+
+                    <p class="text-muted mt-4">&copy; <span id="year"></span> | Fort Mohave, AZ</p>
+
+                </div>
+
+                <div class="will-animate">
+
+                    <h4 class="font-display text-lg text-white">Location</h4>
+
+                    <address class="text-muted mt-4 not-italic">
+
+                        5810 STE A-1 South HWY 95<br>Fort Mohave, AZ 86426
+
+                    </address>
+
+                </div>
+
+                <div class="will-animate">
+
+                    <h4 class="font-display text-lg text-white">Get In Touch</h4>
+
+                     <a href="mailto:tina@formandfunction.com" class="footer-link text-primary hover:text-accent mt-4 inline-block">tina@formandfunction.com</a>
+
+                </div>
+
+            </div>
+
+        </footer>
+
+
+
+    <!-- JS Libraries -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script type="importmap">
+
+        { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.156.1/build/three.module.js" } }
+
+    </script>
+
+
+    <!-- Embedded JavaScript -->
+
+    <script type="module">
+
+        import * as THREE from 'three';
+
+
+        // --- HEADER LOGIC ---
+
+        function initializeHeader() {
+
+            const header = document.getElementById('main-header');
+
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+
+            const mobileNavPanel = document.getElementById('mobile-nav-panel');
+
+            const bar1 = document.getElementById('bar1');
+
+            const bar2 = document.getElementById('bar2');
+
+            const bar3 = document.getElementById('bar3');
+
+
+            window.addEventListener('scroll', () => {
+
+                if (window.scrollY > 20) {
+
+                    header.classList.add('scrolled', 'bg-light/85', 'backdrop-blur-lg', 'shadow-md', 'py-3');
+
+                    header.classList.remove('py-5', 'header-on-dark');
+
+                } else {
+
+                    header.classList.remove('scrolled', 'bg-light/85', 'backdrop-blur-lg', 'shadow-md', 'py-3');
+
+                    header.classList.add('py-5', 'header-on-dark');
+
+                }
+
+            });
+
+
+            mobileMenuToggle.addEventListener('click', () => {
+
+                const isMenuOpen = mobileNavPanel.classList.toggle('translate-x-full');
+
+                bar1.classList.toggle('rotate-45', !isMenuOpen);
+
+                bar1.classList.toggle('translate-y-[9px]', !isMenuOpen);
+
+                bar2.classList.toggle('opacity-0', !isMenuOpen);
+
+                bar3.classList.toggle('-rotate-45', !isMenuOpen);
+
+                bar3.classList.toggle('-translate-y-[9px]', !isMenuOpen);
+
+                document.body.style.overflow = isMenuOpen ? '' : 'hidden';
+
+            });
+
+
+            mobileNavPanel.querySelectorAll('a').forEach(link => {
+
+                link.addEventListener('click', () => mobileMenuToggle.click());
+
+            });
+
+        }
+
+
+        // --- ANIMATIONS ---
+
+        function initializeAnimations() {
+
+            if (typeof gsap === 'undefined') return;
+
+            gsap.registerPlugin(ScrollTrigger);
+
+
+            const tl = gsap.timeline({ delay: 0.3 });
+
+            tl.to('.page-hero .line-reveal > span', { y: 0, ease: "power3.out", duration: 1.5 })
+
+              .to('.page-hero .will-animate', { opacity: 1, y: 0, ease: "power3.out", duration: 1 }, "-=1.2");
+
+
+            const animatedElements = document.querySelectorAll('.will-animate');
+
+            animatedElements.forEach(el => {
+
+                if (el.closest('.page-hero')) return;
+
+                gsap.fromTo(el, { opacity: 0, y: 30 }, {
+
+                    scrollTrigger: { trigger: el, start: "top 85%", toggleActions: "play none none none" },
+
+                    opacity: 1, y: 0, duration: 1, ease: "power3.out", stagger: 0.1
+
+                });
+
+            });
+
+
+            const parallaxImages = document.querySelectorAll(".parallax-img");
+
+            parallaxImages.forEach(img => {
+
+                const wrapper = img.closest('.image-wrapper');
+
+                if (wrapper) {
+
+                    gsap.to(img, {
+
+                        yPercent: -10, ease: "none",
+
+                        scrollTrigger: { trigger: wrapper, start: "top bottom", end: "bottom top", scrub: 0.5 }
+
+                    });
+
+                }
+
+            });
+
+        }
+
+
+        // --- SERVICES HERO 3D BACKGROUND ---
+
+        function initializeServicesHero() {
+
+            const canvas = document.getElementById('services-hero-canvas');
+
+            if (!canvas) return;
+
+
+            const scene = new THREE.Scene();
+
+            const camera = new THREE.PerspectiveCamera(75, canvas.offsetWidth / canvas.offsetHeight, 0.1, 1000);
+
+            const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+
+            renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
+
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            camera.position.z = 5;
+
+
+            const geometry = new THREE.IcosahedronGeometry(2, 1);
+
+            const material = new THREE.MeshStandardMaterial({
+
+                color: 0x8B5CF6,
+
+                metalness: 0.1,
+
+                roughness: 0.2,
+
+                wireframe: true,
+
+            });
+
+            const shape = new THREE.Mesh(geometry, material);
+
+            scene.add(shape);
+
+
+            const light1 = new THREE.DirectionalLight(0xffffff, 2);
+
+            light1.position.set(5, 5, 5);
+
+            scene.add(light1);
+
+           
+
+            const light2 = new THREE.DirectionalLight(0xF87171, 1.5);
+
+            light2.position.set(-5, -5, 2);
+
+            scene.add(light2);
+
+
+            const mouse = new THREE.Vector2();
+
+            window.addEventListener('mousemove', (e) => {
+
+                gsap.to(mouse, {
+
+                    x: (e.clientX / window.innerWidth) * 2 - 1,
+
+                    y: -(e.clientY / window.innerHeight) * 2 + 1,
+
+                    duration: 1.5,
+
+                    ease: 'power3.out'
+
+                });
+
+            });
+
+
+            const clock = new THREE.Clock();
+
+            const animate = () => {
+
+                const elapsedTime = clock.getElapsedTime();
+
+                shape.rotation.y = elapsedTime * 0.1;
+
+                shape.rotation.x = elapsedTime * 0.1;
+
+                camera.position.x += (mouse.x * 0.5 - camera.position.x) * 0.05;
+
+                camera.lookAt(scene.position);
+
+                renderer.render(scene, camera);
+
+                requestAnimationFrame(animate);
+
+            };
+
+            animate();
+
+
+            window.addEventListener('resize', () => {
+
+                renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
+
+                camera.aspect = canvas.offsetWidth / canvas.offsetHeight;
+
+                camera.updateProjectionMatrix();
+
+            });
+
+        }
+
+
+        // --- INITIALIZE EVERYTHING ---
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            initializeHeader();
+
+            initializeAnimations();
+
+            initializeServicesHero();
+
+        });
+
+    </script>
+
+</body>
+
+</html> 

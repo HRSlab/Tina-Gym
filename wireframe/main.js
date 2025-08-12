@@ -1,4 +1,4 @@
-// main.js for The Movement Queen Gym
+// main.js for Form&Function StudioGym
 
 document.addEventListener('DOMContentLoaded', function() {
     // Find the mobile menu button and the navigation menu
