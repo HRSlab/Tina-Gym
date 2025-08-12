@@ -30,6 +30,8 @@ project-root/
 ├── index.html              # Home page
 ├── about.html              # About page
 ├── service.html            # Services page
+├── fitness.html            # Fitness Services page
+├── massage.html            # Massage Services page
 ├── gallery.html            # Gallery/Studio page
 ├── contact.html            # Contact page
 ├── css/
