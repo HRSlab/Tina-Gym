@@ -562,54 +562,39 @@
         }, { threshold: 0.1 });
         revealElements.forEach(el => revealObserver.observe(el));
 
-        // --- VIDEO MODAL ---
-    const videoModal = document.getElementById('videoModal');
-    const openVideoButtons = document.querySelectorAll('[data-video-open]');
-    const closeVideoButtons = document.querySelectorAll('[data-video-close]');
-    const videoIframe = document.getElementById('introVideo');
-    const originalSrc = videoIframe.src;
-
-    // Open the modal and autoplay the video
-    const openModal = () => {
-        console.log("Opening modal...");  // Debug log
-        videoModal.showModal(); // Opens the modal
-        videoIframe.src = originalSrc.includes('?') ? originalSrc + "&autoplay=1" : originalSrc + "?autoplay=1"; // Add autoplay to video URL
-        console.log("Iframe source: ", videoIframe.src);  // Check the source of the iframe
-    };
-
-    // Close the modal and stop the video
-    const closeModal = () => {
-        console.log("Closing modal...");  // Debug log
-        videoModal.close(); // Closes the modal
-        // Stop the video by removing and resetting the iframe src
-        videoIframe.src = '';
-        videoIframe.src = originalSrc; // Reset the iframe source to the original without autoplay
-        console.log("Iframe source reset: ", videoIframe.src);  // Check the reset iframe source
-    };
-
-    // Attach event listeners to buttons
-    openVideoButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            console.log("Open button clicked");
-            openModal();
-        });
-    });
-    closeVideoButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            console.log("Close button clicked");
-            closeModal();
-        });
-    });
-
-    // Close the modal when clicking outside (on the overlay)
-    videoModal.addEventListener('click', (e) => {
-        if (e.target === videoModal) {
-            console.log("Clicked outside the modal. Closing...");
-            closeModal();
+        // --- VIDEO MODAL (Corrected) ---
+        const videoModal = document.getElementById('videoModal');
+        const openVideoButtons = document.querySelectorAll('[data-video-open]');
+        const closeVideoButtons = document.querySelectorAll('[data-video-close]');
+        const videoIframe = document.getElementById('introVideo');
+        const originalSrc = videoIframe.src;
+        
+        const openModal = () => {
+            if (videoModal) {
+                videoModal.showModal();
+                const autoplaySrc = originalSrc.includes('?') ? `${originalSrc}&autoplay=1` : `${originalSrc}?autoplay=1`;
+                videoIframe.src = autoplaySrc;
+            }
+        };
+        
+        const closeModal = () => {
+            if (videoModal) {
+                videoModal.close();
+                videoIframe.src = '';
+                videoIframe.src = originalSrc;
+            }
+        };
+        
+        openVideoButtons.forEach(btn => btn.addEventListener('click', openModal));
+        closeVideoButtons.forEach(btn => btn.addEventListener('click', closeModal));
+        
+        if (videoModal) {
+            videoModal.addEventListener('click', (e) => {
+                if (e.target === videoModal) {
+                    closeModal();
+                }
+            });
         }
-    });
-});
-
 
         // --- STICKY CTA ---
         const stickyCTA = document.getElementById('sticky-cta');
