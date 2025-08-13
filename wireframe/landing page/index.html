@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Personalized Fitness Training | Form&Function Studio</title>
+  <meta name="description" content="Custom fitness plans, expert coaching, and real accountability from Form&Function Studio. Start your transformation with a free first session." />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Personalized Fitness Training | Form&Function Studio" />
+  <meta property="og:description" content="Custom fitness plans, expert coaching, and real accountability. Claim your free first session today." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/images/hero.jpg" />
+  <meta property="og:url" content="https://example.com/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/main.css" />
+
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏋️</text></svg>">
+
+  <!-- JSON-LD (LocalBusiness / Organization) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "Form&Function Studio",
+    "image": "https://example.com/assets/images/hero.jpg",
+    "url": "https://example.com/",
+    "telephone": "+1-000-000-0000",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "5810 STE A-1 South HWY 95",
+      "addressLocality": "Fort Mohave",
+      "addressRegion": "AZ",
+      "postalCode": "86426",
+      "addressCountry": "US"
+    },
+    "openingHours": "Mo-Fr 08:00-18:00",
+    "sameAs": [
+      "https://www.instagram.com/",
+      "https://www.facebook.com/"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Progress bar -->
+  <div class="progress" aria-hidden="true"><span class="progress__bar"></span></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header__inner">
+      <a class="logo" href="#" aria-label="Form and Function Studio Home">
+        <span class="logo__mark">FF</span>
+        <span class="logo__text">Form&Function Studio</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <ul class="nav__list">
+          <li><a href="#benefits">Benefits</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#testimonials">Results</a></li>
+          <li><a href="#trainer">Trainer</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--primary header__cta" href="#signup">Get My Free Plan</a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-controls="mobileNav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+      <a href="#benefits">Benefits</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#testimonials">Results</a>
+      <a href="#trainer">Trainer</a>
+      <a class="btn btn--primary" href="#signup">Get My Free Plan</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="hero" aria-labelledby="hero-title">
+    <picture>
+      <!-- Swap with your own responsive sources if needed -->
+      <img src="assets/images/hero.jpg" alt="" class="hero__bg" loading="eager" fetchpriority="high" />
+    </picture>
+    <div class="hero__overlay"></div>
+    <div class="container hero__content">
+      <h1 id="hero-title" class="hero__title">Transform Your Body with <span>Personalized Fitness Training</span></h1>
+      <p class="hero__subtitle">Custom plans. Expert coaching. Real accountability. Your journey starts today.</p>
+      <div class="hero__actions">
+        <a href="#signup" class="btn btn--primary btn--lg">Get My Free Fitness Plan</a>
+        <button class="btn btn--ghost btn--lg" data-video-open aria-haspopup="dialog" aria-controls="videoModal">Watch 30s Intro</button>
+      </div>
+      <div class="trust-badges" aria-label="Social proof">
+        <span>⭐ Over <strong>1,200</strong> clients transformed</span>
+        <span>🏆 10+ years coaching</span>
+        <span>✅ Certified & insured</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social proof logos (optional) -->
+  <section class="logos">
+    <div class="container logos__grid">
+      <span class="logos__item">As seen in</span>
+      <img src="assets/images/benefit-1.jpg" alt="Brand placeholder" loading="lazy" />
+      <img src="assets/images/benefit-2.jpg" alt="Brand placeholder" loading="lazy" />
+      <img src="assets/images/benefit-3.jpg" alt="Brand placeholder" loading="lazy" />
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section id="benefits" class="section">
+    <div class="container">
+      <header class="section__header">
+        <h2 class="section__title">Why Personalized Training Works</h2>
+        <p class="section__subtitle">No guesswork. No cookie-cutter plans. Just a clear path to results that fit your life.</p>
+      </header>
+
+      <div class="grid grid--3">
+        <article class="card reveal">
+          <img class="card__img" src="assets/images/benefit-1.jpg" alt="" loading="lazy" />
+          <div class="card__body">
+            <h3 class="card__title">Tailored Workouts</h3>
+            <p class="card__text">Programs built for your goals, schedule, and movement patterns—so you progress faster.</p>
+            <ul class="list list--checks">
+              <li>Start with a movement assessment</li>
+              <li>Progressive, sustainable intensity</li>
+              <li>Home or gym friendly plans</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <img class="card__img" src="assets/images/benefit-2.jpg" alt="" loading="lazy" />
+          <div class="card__body">
+            <h3 class="card__title">Coaching & Accountability</h3>
+            <p class="card__text">Stay consistent with expert guidance, form checks, and weekly progress reviews.</p>
+            <ul class="list list--checks">
+              <li>1:1 sessions online or in-studio</li>
+              <li>Weekly check-ins & habit tracking</li>
+              <li>Injury-aware programming</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <img class="card__img" src="assets/images/benefit-3.jpg" alt="" loading="lazy" />
+          <div class="card__body">
+            <h3 class="card__title">Nutrition Support</h3>
+            <p class="card__text">Simple, flexible guidance that complements your training and lifestyle.</p>
+            <ul class="list list--checks">
+              <li>Macro guidance if desired</li>
+              <li>Easy swaps & meal ideas</li>
+              <li>No extreme restrictions</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how-it-works" class="section section--alt">
+    <div class="container">
+      <header class="section__header">
+        <h2 class="section__title">Your Journey in 3 Simple Steps</h2>
+      </header>
+
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step__num">01</div>
+          <h3 class="step__title">Free Consultation</h3>
+          <p class="step__text">Tell us your goals, history, and schedule. We’ll map out a realistic plan.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step__num">02</div>
+          <h3 class="step__title">Your Custom Plan</h3>
+          <p class="step__text">Receive a program built for you—with exercise demos and nutrition support.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step__num">03</div>
+          <h3 class="step__title">Train & Track</h3>
+          <p class="step__text">Train with guidance, log progress, and adjust weekly for steady wins.</p>
+        </div>
+      </div>
+
+      <div class="center">
+        <a href="#signup" class="btn btn--primary">Begin Your Journey</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="section section--dark">
+    <div class="container">
+      <header class="section__header">
+        <h2 class="section__title section__title--invert">Real Clients. Real Results.</h2>
+      </header>
+
+      <div class="testimonials">
+        <figure class="testimonial reveal">
+          <blockquote>
+            “First time I’ve seen real, lasting results. The personalized plan and accountability changed everything.”
+          </blockquote>
+          <figcaption>
+            <img src="assets/images/testimonial-1.jpg" alt="Photo of Sarah L." loading="lazy" />
+            <div>
+              <div class="t-name">Sarah L.</div>
+              <div class="t-meta">Lost 20 lbs in 3 months</div>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial reveal">
+          <blockquote>
+            “At 60+, I worried about injuries. The coaching was safe, smart, and effective. I feel 20 years younger.”
+          </blockquote>
+          <figcaption>
+            <img src="assets/images/testimonial-2.jpg" alt="Photo of Mike R." loading="lazy" />
+            <div>
+              <div class="t-name">Mike R.</div>
+              <div class="t-meta">Improved mobility & balance</div>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial reveal">
+          <blockquote>
+            “The weekly check-ins kept me on track. Stronger, leaner, and more confident than ever.”
+          </blockquote>
+          <figcaption>
+            <img src="assets/images/testimonial-3.jpg" alt="Photo of Devon K." loading="lazy" />
+            <div>
+              <div class="t-name">Devon K.</div>
+              <div class="t-meta">Down 4% body fat</div>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trainer -->
+  <section id="trainer" class="section">
+    <div class="container trainer">
+      <div class="trainer__media reveal">
+        <img src="assets/images/trainer.jpg" alt="Trainer Tina Davis coaching a client" loading="lazy" />
+      </div>
+      <div class="trainer__content reveal">
+        <h2 class="section__title">Meet Your Trainer, Tina Davis</h2>
+        <p class="lead">Certified Personal Trainer & Wellness Coach</p>
+        <p>Fitness should empower you—not intimidate you. I help clients of all ages build sustainable strength, mobility, and confidence with programs that fit real life.</p>
+        <ul class="list list--checks">
+          <li>NASM-CPT • CPR/AED certified</li>
+          <li>Functional strength & mobility focus</li>
+          <li>Private, non-intimidating studio</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--alt">
+    <div class="container">
+      <header class="section__header">
+        <h2 class="section__title">Questions, Answered</h2>
+      </header>
+      <div class="faq">
+        <details class="faq__item reveal">
+          <summary>Do I need a gym membership?</summary>
+          <p>No. We can train in-studio or remotely. Your plan can be 100% home-friendly.</p>
+        </details>
+        <details class="faq__item reveal">
+          <summary>How soon will I see results?</summary>
+          <p>Most clients feel stronger within 2 weeks and see visible changes in 4–6 weeks with consistency.</p>
+        </details>
+        <details class="faq__item reveal">
+          <summary>Is this safe if I have previous injuries?</summary>
+          <p>Yes. We start with an assessment and build an injury-aware program tailored to your needs.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Signup -->
+  <section id="signup" class="section section--cta">
+    <div class="container center">
+      <header class="section__header">
+        <h2 class="section__title section__title--invert">Start Your Transformation—Free First Session</h2>
+        <p class="section__subtitle section__subtitle--invert">Limited spots available this month.</p>
+      </header>
+
+      <form id="contactForm" class="form reveal" aria-labelledby="signup-title" novalidate>
+        <div class="form__row">
+          <label for="name">Full Name</label>
+          <input id="name" name="name" type="text" placeholder="Jane Doe" required />
+          <span class="form__error" data-error-for="name"></span>
+        </div>
+
+        <div class="form__row">
+          <label for="email">Email Address</label>
+          <input id="email" name="email" type="email" inputmode="email" placeholder="jane@example.com" required />
+          <span class="form__error" data-error-for="email"></span>
+        </div>
+
+        <div class="form__row">
+          <label for="goal">Primary Fitness Goal</label>
+          <select id="goal" name="goal" required>
+            <option value="">Choose one…</option>
+            <option>Lose weight</option>
+            <option>Build muscle</option>
+            <option>Improve mobility</option>
+            <option>Boost overall fitness</option>
+          </select>
+          <span class="form__error" data-error-for="goal"></span>
+        </div>
+
+        <button class="btn btn--accent btn--lg" type="submit">Claim My Free Session</button>
+        <p class="form__fineprint">We’ll never share your information. Unsubscribe anytime.</p>
+        <div id="form-status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer__grid">
+      <div>
+        <div class="logo logo--footer">
+          <span class="logo__mark">FF</span>
+          <span class="logo__text">Form&Function Studio</span>
+        </div>
+        <p class="muted">5810 STE A-1 South HWY 95, Fort Mohave, AZ 86426</p>
+        <p class="muted">&copy; <span id="year"></span> Form&Function Studio. All rights reserved.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul class="footer__links">
+          <li><a href="#benefits">Benefits</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#testimonials">Results</a></li>
+          <li><a href="#trainer">Trainer</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul class="footer__links">
+          <li><a href="mailto:tina@formandfunction.com">tina@formandfunction.com</a></li>
+          <li><a href="tel:+10000000000">+1 (000) 000-0000</a></li>
+          <li><a href="https://www.themovementqueen.com" target="_blank" rel="noopener">The Movement Queen</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky mobile CTA -->
+  <div class="sticky-cta" role="region" aria-label="Signup call to action">
+    <span>Ready to start?</span>
+    <a href="#signup" class="btn btn--primary">Get My Free Plan</a>
+  </div>
+
+  <!-- Video Modal -->
+  <dialog class="modal" id="videoModal" aria-label="Intro video">
+    <button class="modal__close" data-video-close aria-label="Close video">×</button>
+    <div class="modal__content">
+      <!-- Replace src with your video URL or YouTube embed -->
+      <iframe
+        id="introVideo"
+        width="560" height="315"
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1"
+        title="Intro Video"
+        frameborder="0"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </dialog>
+
+  <!-- JS -->
+  <script src="js/main.js" defer></script>
+</body>
+</html>
+
