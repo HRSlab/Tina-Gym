@@ -32,7 +32,7 @@ project-root/
 ├── service.html            # Services page
 ├── fitness.html            # Fitness Services page
 ├── massage.html            # Massage Services page
-├── gallery.html            # Gallery/Studio page
+├── studio.html            # Gallery/Studio page
 ├── contact.html            # Contact page
 ├── css/
 │   ├── main.css            # Global styles & layout

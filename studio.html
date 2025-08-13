@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Studio | Form&Function Studio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#8B5CF6',
+                        'primary-dark': '#7C3AED',
+                        'accent': '#F87171',
+                        'light': '#F9FAFB',
+                        'light-alt': '#F3F4F6',
+                        'dark': '#1F2937',
+                        'dark-deep': '#111827',
+                        'muted': '#6B7280',
+                    },
+                    fontFamily: {
+                        display: ['Poppins', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+
+    <style>
+        :root {
+            --color-primary: #8B5CF6;
+            --color-light: #F9FAFB;
+            --color-light-alt: #F3F4F6;
+            --color-dark: #1F2937;
+        }
+
+        body {
+            background-color: var(--color-light);
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Header Styles */
+        .main-header {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+        }
+        .main-nav a .underline-anim {
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .main-nav a:hover .underline-anim {
+            transform: scaleX(1);
+        }
+
+        /* Page Hero Styles */
+        .page-hero {
+            position: relative;
+            height: 60vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background-color: var(--color-light-alt);
+        }
+        #studio-hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .page-hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .page-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+        }
+        .page-hero p {
+            font-size: 1.25rem;
+            margin-top: 1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Gallery Styles */
+        .gallery-grid {
+            column-count: 1;
+            column-gap: 1.5rem;
+        }
+        @media (min-width: 640px) {
+            .gallery-grid { column-count: 2; }
+        }
+        @media (min-width: 1024px) {
+            .gallery-grid { column-count: 3; }
+        }
+        .gallery-item {
+            margin-bottom: 1.5rem;
+            break-inside: avoid;
+            border-radius: 0.75rem;
+            /* Set initial state for GSAP */
+            visibility: hidden; 
+        }
+        .gallery-item .image-container {
+            overflow: hidden;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+        }
+
+        /* Animation Utility Classes */
+        .will-animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-light font-body">
+
+    <!-- Header Component -->
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 py-5">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="font-display text-2xl font-bold text-dark transition-transform hover:scale-105">
+                Form&Function Studio
+            </a>
+            <nav class="main-nav hidden md:flex items-center space-x-8">
+                <a href="service.html" class="font-medium text-dark relative"><span>Services</span><span class="underline-anim absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span></a>
+                <a href="about.html" class="font-medium text-dark relative"><span>About</span><span class="underline-anim absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span></a>
+                <a href="studio.html" class="font-medium text-dark relative"><span>The Studio</span><span class="underline-anim absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-100"></span></a>
+                <a href="contact.html" class="font-medium text-dark relative"><span>Contact</span><span class="underline-anim absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span></a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="contact.html" class="hidden md:inline-block bg-primary text-white font-display font-semibold px-5 py-2 rounded-lg hover:bg-primary-dark transition-transform hover:-translate-y-0.5 shadow-sm hover:shadow-lg">
+                    Book a Session
+                </a>
+                <button id="mobile-menu-toggle" class="md:hidden z-50 p-2" aria-label="Toggle Menu">
+                    <div class="w-7 h-7 flex flex-col justify-around">
+                        <span id="bar1" class="block w-full h-0.5 bg-dark rounded-full transition-transform duration-300 ease-in-out"></span>
+                        <span id="bar2" class="block w-full h-0.5 bg-dark rounded-full transition-opacity duration-300 ease-in-out"></span>
+                        <span id="bar3" class="block w-full h-0.5 bg-dark rounded-full transition-transform duration-300 ease-in-out"></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div id="mobile-nav-panel" class="fixed top-0 left-0 w-full h-full bg-light z-40 transform translate-x-full transition-transform duration-300 ease-in-out">
+        <nav class="h-full flex flex-col justify-center items-center space-y-8">
+            <a href="service.html" class="font-display text-3xl text-dark">Services</a>
+            <a href="about.html" class="font-display text-3xl text-dark">About</a>
+            <a href="studio.html" class="font-display text-3xl text-dark">The Studio</a>
+            <a href="contact.html" class="font-display text-3xl text-dark">Contact</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- Page Hero Component -->
+        <section class="page-hero">
+            <canvas id="studio-hero-canvas"></canvas>
+            <div class="page-hero-content">
+                <h1 class="font-display text-dark">
+                    <span class="line-reveal"><span>Welcome to Your Space</span></span>
+                </h1>
+                <p class="text-dark font-medium will-animate">
+                    A private, clean, and motivating environment designed for your success.
+                </p>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="gallery-grid">
+                    <!-- Structure remains the same -->
+                    <div class="gallery-item"><div class="image-container"><img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?q=80&w=1975&auto=format&fit=crop" alt="Studio view with weights and equipment"></div></div>
+                    <div class="gallery-item"><div class="image-container"><img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=1974&auto=format&fit=crop" alt="Close up of kettlebells"></div></div>
+                    <div class="gallery-item"><div class="image-container"><img src="https://images.unsplash.com/photo-1591343395082-e120087004b4?w=800&auto=format&fit=crop" alt="Serene massage therapy room"></div></div>
+                    <div class="gallery-item"><div class="image-container"><img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop" alt="Fitness equipment ready for a workout session"></div></div>
+                    <div class="gallery-item"><div class="image-container"><img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?q=80&w=2070&auto=format&fit=crop" alt="Dumbbell rack"></div></div>
+                    <div class="gallery-item"><div class="image-container"><img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?q=80&w=1974&auto=format&fit=crop" alt="Massage table in a calm room"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="py-20 bg-light-alt">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold font-display will-animate">Features & Amenities</h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center will-animate">
+                        <div class="bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg></div>
+                        <h3 class="text-xl font-bold font-display mb-2">Private Environment</h3>
+                        <p class="text-muted">Enjoy a focused, one-on-one setting without the crowds of a commercial gym.</p>
+                    </div>
+                    <div class="text-center will-animate" style="transition-delay: 200ms;">
+                        <div class="bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.57,14.86L22,13.43L20.57,12L17,15.57L8.43,7L12,3.43L10.57,2L9.14,3.43L7.71,2L5.57,4.14L4.14,2.71L2.71,4.14L4.14,5.57L2,7.71L3.43,9.14L2,10.57L3.43,12L7,8.43L15.57,17L12,20.57L13.43,22L14.86,20.57L16.29,22L18.43,19.86L19.86,21.29L21.29,19.86L19.86,18.43L22,16.29L20.57,14.86Z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold font-display mb-2">State-of-the-Art Equipment</h3>
+                        <p class="text-muted">A curated selection of professional equipment for strength, mobility, and functional training.</p>
+                    </div>
+                    <div class="text-center will-animate" style="transition-delay: 400ms;">
+                        <div class="bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div>
+                        <h3 class="text-xl font-bold font-display mb-2">Calm & Clean Atmosphere</h3>
+                        <p class="text-muted">A meticulously maintained space designed to be both energizing and restorative.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20 cta-section bg-dark text-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold font-display will-animate">Ready to See the Space?</h2>
+                <p class="mt-4 text-lg max-w-2xl mx-auto will-animate" style="transition-delay: 150ms;">The best way to experience our studio is to see it for yourself. Schedule a free, no-obligation consultation and tour today.</p>
+                <div class="mt-8 will-animate" style="transition-delay: 300ms;">
+                    <a href="contact.html" class="bg-primary text-white font-bold py-3 px-8 rounded-full text-lg transition-transform hover:scale-105 shadow-lg">
+                        Book a Visit
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Component -->
+    <footer class="bg-dark-deep text-muted py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Form&Function Studio | All Rights Reserved</p>
+            <p class="text-sm mt-2">5810 STE A-1 South HWY 95, Fort Mohave, AZ 86426</p>
+        </div>
+    </footer>
+
+    <!-- JS Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script type="importmap">
+        { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.156.1/build/three.module.js" } }
+    </script>
+
+    <!-- Embedded JavaScript -->
+    <script type="module">
+        import * as THREE from 'three';
+
+        // --- HEADER LOGIC ---
+        function initializeHeader() {
+            const header = document.getElementById('main-header');
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileNavPanel = document.getElementById('mobile-nav-panel');
+            const bar1 = document.getElementById('bar1');
+            const bar2 = document.getElementById('bar2');
+            const bar3 = document.getElementById('bar3');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    header.classList.add('bg-light/95', 'backdrop-blur-lg', 'shadow-md', 'py-3');
+                    header.classList.remove('py-5');
+                } else {
+                    header.classList.remove('bg-light/95', 'backdrop-blur-lg', 'shadow-md', 'py-3');
+                    header.classList.add('py-5');
+                }
+            });
+
+            mobileMenuToggle.addEventListener('click', () => {
+                const isMenuOpen = mobileNavPanel.classList.toggle('translate-x-full');
+                bar1.classList.toggle('rotate-45'); bar1.classList.toggle('translate-y-[9px]');
+                bar2.classList.toggle('opacity-0');
+                bar3.classList.toggle('-rotate-45'); bar3.classList.toggle('-translate-y-[9px]');
+                document.body.style.overflow = isMenuOpen ? '' : 'hidden';
+            });
+        }
+
+        // --- ANIMATIONS ---
+        function initializeAnimations() {
+            if (typeof gsap === 'undefined') return;
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Animate other elements with CSS observer for performance
+            const animatedElements = document.querySelectorAll('.will-animate');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            animatedElements.forEach(el => observer.observe(el));
+            
+            const heroContent = document.querySelector('.page-hero-content');
+            if(heroContent) {
+                heroContent.querySelector('.line-reveal').classList.add('is-visible');
+                heroContent.querySelector('p.will-animate').classList.add('is-visible');
+            }
+
+            // Refactored GSAP animation for the gallery, as per user request
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            galleryItems.forEach(item => {
+                const imageContainer = item.querySelector('.image-container');
+                const image = item.querySelector('img');
+
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top 85%",
+                        toggleActions: "play none none none"
+                    }
+                });
+
+                tl.set(item, { visibility: 'visible' });
+                
+                tl.fromTo(imageContainer, 
+                    { 
+                        clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)',
+                        webkitClipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)',
+                    },
+                    { 
+                        clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+                        webkitClipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+                        duration: 1.2, 
+                        ease: 'power3.out' 
+                    }
+                )
+                .from(image, { 
+                    scale: 1.4, 
+                    duration: 1.5, 
+                    ease: 'power3.out' 
+                }, "<0.2"); // Start slightly after the clip-path begins
+            });
+        }
+
+        // --- HERO 3D BACKGROUND ---
+        function initializeStudioHero() {
+            const canvas = document.getElementById('studio-hero-canvas');
+            if (!canvas) return;
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, canvas.offsetWidth / canvas.offsetHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+            renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            camera.position.z = 5;
+
+            const count = 500;
+            const positions = new Float32Array(count * 3);
+            for(let i = 0; i < count * 3; i++) { positions[i] = (Math.random() - 0.5) * 10; }
+            const geo = new THREE.BufferGeometry();
+            geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            const mat = new THREE.PointsMaterial({ size: 0.03, color: 0x8B5CF6, transparent: true, opacity: 0.6 });
+            const particles = new THREE.Points(geo, mat);
+            scene.add(particles);
+
+            const mouse = new THREE.Vector2();
+            window.addEventListener('mousemove', (e) => {
+                gsap.to(mouse, {
+                    x: (e.clientX / window.innerWidth) * 2 - 1,
+                    y: -(e.clientY / window.innerHeight) * 2 + 1,
+                    duration: 1.5,
+                    ease: 'power3.out'
+                });
+            });
+
+            const clock = new THREE.Clock();
+            const animate = () => {
+                const elapsedTime = clock.getElapsedTime();
+                particles.rotation.y = elapsedTime * 0.05;
+                particles.position.x += (mouse.x * 0.5 - particles.position.x) * 0.02;
+                particles.position.y += (mouse.y * 0.5 - particles.position.y) * 0.02;
+                renderer.render(scene, camera);
+                requestAnimationFrame(animate);
+            };
+            animate();
+            
+            window.addEventListener('resize', () => {
+                renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
+                camera.aspect = canvas.offsetWidth / canvas.offsetHeight;
+                camera.updateProjectionMatrix();
+            });
+        }
+
+        // --- INITIALIZE EVERYTHING ---
+        document.addEventListener('DOMContentLoaded', function () {
+            initializeHeader();
+            initializeAnimations();
+            initializeStudioHero();
+        });
+    </script>
+</body>
+</html>
