@@ -156,6 +156,7 @@
 
         /* Grid & Cards */
         .grid { display: grid; gap: 2rem; }
+        .grid--2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
         .grid--3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
         .card { background-color: var(--color-white); border-radius: 0.5rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         .card__img { width: 100%; height: 200px; object-fit: cover; }
@@ -203,6 +204,8 @@
         .form label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
         .form input, .form select { width: 100%; padding: 0.75rem; border: 1px solid var(--color-muted); background-color: var(--color-dark); color: var(--color-white); border-radius: 0.25rem; font-size: 1rem; }
         .form input:focus, .form select:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 2px var(--color-primary); }
+        .form button { display: block; width: 100%; padding: 0.75rem; background-color: var(--color-accent); color: var(--color-white); border: none; border-radius: 0.25rem; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: background-color 0.3s, transform 0.3s; }
+        .form button:hover { background-color: #ef4444; transform: translateY(-2px); }
         .form__fineprint { font-size: 0.8rem; color: var(--color-muted); margin-top: 1rem; text-align: center; }
         #form-status { margin-top: 1rem; text-align: center; }
 
@@ -221,12 +224,9 @@
         .sticky-cta span { color: var(--color-white); font-weight: 600; }
         @media (min-width: 768px) { .sticky-cta { display: none; } }
 
-        /* Modal */
-        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 1000; display: none; align-items: center; justify-content: center; }
-        .modal.is-open { display: flex; }
-        .modal__content { position: relative; width: 90%; max-width: 800px; aspect-ratio: 16 / 9; }
-        .modal__close { position: absolute; top: -40px; right: 0; background: none; border: none; color: var(--color-white); font-size: 2.5rem; cursor: pointer; }
-        .modal iframe { width: 100%; height: 100%; border: none; }
+        /* Video Section */
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 0.5rem; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
         /* Reveal Animation */
         .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
@@ -276,7 +276,7 @@
                 <p class="hero__subtitle">Custom plans. Expert coaching. Real accountability. Your journey starts today.</p>
                 <div class="hero__actions">
                     <a href="#signup" class="btn btn--primary btn--lg">Get My Free Fitness Plan</a>
-                    <button class="btn btn--ghost btn--lg" data-video-open aria-haspopup="dialog" aria-controls="videoModal">Watch 30s Intro</button>
+                    <a href="https://youtu.be/U7VAJwYONks?si=db4ck-pugTBJIo6K" target="_blank" rel="noopener" class="btn btn--ghost btn--lg">Watch 30s Intro</a>
                 </div>
                 <div class="trust-badges" aria-label="Social proof">
                     <span>⭐ Over <strong>1,200</strong> clients transformed</span>
@@ -359,6 +359,18 @@
                 </div>
                 <div class="center" style="margin-top: 3rem;">
                     <a href="#signup" class="btn btn--primary">Begin Your Journey</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section class="section">
+            <div class="container">
+                <header class="section__header">
+                    <h2 class="section__title">See It In Action</h2>
+                </header>
+                <div class="video-container reveal">
+                    <iframe src="https://www.youtube.com/embed/U7VAJwYONks" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </section>
@@ -462,10 +474,36 @@
                             <option>Boost overall fitness</option>
                         </select>
                     </div>
-                    <button class="btn btn--accent btn--lg" type="submit">Claim My Free Session</button>
+                    <button type="submit">Claim My Free Session</button>
                     <p class="form__fineprint">We’ll never share your information.</p>
                     <div id="form-status" role="status" aria-live="polite"></div>
                 </form>
+            </div>
+        </section>
+        
+        <!-- Explore More Section -->
+        <section class="section">
+            <div class="container">
+                <header class="section__header">
+                    <h2 class="section__title">Explore More</h2>
+                    <p class="section__subtitle">Continue your wellness journey.</p>
+                </header>
+                <div class="grid grid--2">
+                    <article class="card reveal" style="text-align: center;">
+                        <div class="card__body">
+                            <h3 class="card__title">Main Studio Website</h3>
+                            <p class="card__text" style="margin-bottom: 1.5rem;">Looking for Thai Massage or studio info? Visit our main website.</p>
+                            <a href="index.html" class="btn btn--primary">Visit Form&Function</a>
+                        </div>
+                    </article>
+                    <article class="card reveal" style="text-align: center;">
+                        <div class="card__body">
+                            <h3 class="card__title">The Movement Queen</h3>
+                            <p class="card__text" style="margin-bottom: 1.5rem;">Discover online programs, tutorials, and insights on my dedicated wellness platform.</p>
+                            <a href="https://www.themovementqueen.com" class="btn btn--primary" style="background-color: var(--color-dark);">Visit The Blog</a>
+                        </div>
+                    </article>
+                </div>
             </div>
         </section>
 
@@ -504,14 +542,6 @@
             <span>Ready to start?</span>
             <a href="#signup" class="btn btn--primary">Get My Free Plan</a>
         </div>
-
-        <!-- Video Modal -->
-        <dialog class="modal" id="videoModal" aria-label="Intro video">
-            <div class="modal__content">
-                <iframe id="introVideo" width="560" height="315" src="https://www.youtube.com/embed/U7VAJwYONks?enablejsapi=1" title="Intro Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <button class="modal__close" data-video-close aria-label="Close video">×</button>
-        </dialog>
     </main>
 
     <!-- JS Libraries -->
@@ -561,40 +591,6 @@
             });
         }, { threshold: 0.1 });
         revealElements.forEach(el => revealObserver.observe(el));
-
-        // --- VIDEO MODAL (Corrected) ---
-        const videoModal = document.getElementById('videoModal');
-        const openVideoButtons = document.querySelectorAll('[data-video-open]');
-        const closeVideoButtons = document.querySelectorAll('[data-video-close]');
-        const videoIframe = document.getElementById('introVideo');
-        const originalSrc = videoIframe.src;
-        
-        const openModal = () => {
-            if (videoModal) {
-                videoModal.showModal();
-                const autoplaySrc = originalSrc.includes('?') ? `${originalSrc}&autoplay=1` : `${originalSrc}?autoplay=1`;
-                videoIframe.src = autoplaySrc;
-            }
-        };
-        
-        const closeModal = () => {
-            if (videoModal) {
-                videoModal.close();
-                videoIframe.src = '';
-                videoIframe.src = originalSrc;
-            }
-        };
-        
-        openVideoButtons.forEach(btn => btn.addEventListener('click', openModal));
-        closeVideoButtons.forEach(btn => btn.addEventListener('click', closeModal));
-        
-        if (videoModal) {
-            videoModal.addEventListener('click', (e) => {
-                if (e.target === videoModal) {
-                    closeModal();
-                }
-            });
-        }
 
         // --- STICKY CTA ---
         const stickyCTA = document.getElementById('sticky-cta');
