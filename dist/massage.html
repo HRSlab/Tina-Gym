@@ -209,7 +209,51 @@
         .footer__links { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
         .footer__links a { text-decoration: none; color: var(--color-muted); transition: color 0.2s; }
         .footer__links a:hover { color: var(--color-primary); }
+        /* Footer Legal */
 
+.legal_links {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 3rem;        /* mt-12 */
+  padding-top: 2rem;       /* pt-8 */
+  border-top: 1px solid #b9bec6; /* border-gray-700 */
+  text-align: center;
+  overflow-x: hidden;      /* prevent any overflow */
+}
+
+.legal_links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.legal_links li {
+  display: inline-block;
+  margin: 0 0.75rem; /* mx-3 */
+  font-size: 0.875rem; /* text-sm */
+}
+
+.legal_links a {
+  color: #9ca3af; /* muted text */
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+/* Hover colors */
+.legal_links a[href*="privacy"]:hover {
+  color: #8b5cf6; /* primary */
+}
+
+.legal_links a[href*="terms"]:hover {
+  color: #8b5cf6; /* accent */
+}
+
+/* Separator */
+.legal_links li:not(:last-child)::after {
+  content: "|";
+  color: #9ca3af;
+  margin-left: 0.75rem;
+}
         /* Sticky CTA */
         .sticky-cta { position: fixed; bottom: 0; left: 0; width: 100%; background-color: var(--color-dark); padding: 1rem; display: flex; justify-content: space-between; align-items: center; z-index: 90; transform: translateY(100%); transition: transform 0.4s; }
         .sticky-cta.visible { transform: translateY(0); }
@@ -341,7 +385,7 @@
                 </header>
                 <div class="grid grid--3">
                     <article class="card reveal">
-                        <img class="card__img" src="assets/images/ffimgs/Form-and-Function-Fitness-Branding-Fort-Mohave-AZ-Professional-Photographer-NPC-Nickeys-Photo-Creations-29.jpg" alt="Person's back being stretched during a massage" loading="lazy" />
+                        <img class="card__img" src="assets/images/ffimgs/Form-and-Function-Fitness-Branding-Fort-Mohave-AZ-Professional-Photographer-NPC-Nickeys-Photo-Creations-29.webp" alt="Person's back being stretched during a massage" loading="lazy" />
                         <div class="card__body">
                             <h3 class="card__title">Alleviate Chronic Pain</h3>
                             <p class="card__text">Targets deep-seated tension in muscles and joints, providing lasting relief from aches and pains.</p>
@@ -353,7 +397,7 @@
                         </div>
                     </article>
                     <article class="card reveal">
-                        <img class="card__img" src="assets/images/ffimgs/Form-and-Function-Fitness-Branding-Fort-Mohave-AZ-Professional-Photographer-NPC-Nickeys-Photo-Creations-36.jpg" alt="Person's back being stretched during a massage" loading="lazy" />
+                        <img class="card__img" src="assets/images/ffimgs/Form-and-Function-Fitness-Branding-Fort-Mohave-AZ-Professional-Photographer-NPC-Nickeys-Photo-Creations-36.webp" alt="Person's back being stretched during a massage" loading="lazy" />
                         <div class="card__body">
                             <h3 class="card__title">Improve Flexibility</h3>
                             <p class="card__text">Combines assisted stretching and yoga-like postures to increase your range of motion.</p>
@@ -365,7 +409,7 @@
                         </div>
                     </article>
                     <article class="card reveal">
-                        <img class="card__img" src="assets/images/ffimgs/Form-and-Function-Fitness-Branding-Fort-Mohave-AZ-Professional-Photographer-NPC-Nickeys-Photo-Creations-38.jpg" alt="Person's back being stretched during a massage" loading="lazy" />
+                        <img class="card__img" src="assets/images/ffimgs/Form-and-Function-Fitness-Branding-Fort-Mohave-AZ-Professional-Photographer-NPC-Nickeys-Photo-Creations-38.webp" alt="Person's back being stretched during a massage" loading="lazy" />
                         <div class="card__body">
                             <h3 class="card__title">Reduce Stress</h3>
                             <p class="card__text">A meditative experience that calms the nervous system and promotes mental clarity.</p>
@@ -444,7 +488,7 @@
         <section id="practitioner" class="section">
             <div class="container trainer">
                 <div class="trainer__media reveal">
-                    <img src="assets/images/ffimgs/Form-and-Function-Fitness-Branding-Fort-Mohave-AZ-Professional-Photographer-NPC-Nickeys-Photo-Creations-26.jpg" alt="Practitioner Tina Davis" loading="lazy" />
+                    <img src="assets/images/ffimgs/Form-and-Function-Fitness-Branding-Fort-Mohave-AZ-Professional-Photographer-NPC-Nickeys-Photo-Creations-26.webp" alt="Practitioner Tina Davis" loading="lazy" />
                 </div>
                 <div class="trainer__content reveal">
                     <h2 class="section__title">Meet Your Practitioner, Tina Davis</h2>
@@ -563,6 +607,13 @@
                     </ul>
                 </div>
             </div>
+                                     <!-- Legal Links Section -->
+                        <div class="legal_links">
+                    <ul>
+                        <li><a href="legal-privacy.html">Privacy Policy</a></li>
+                        <li><a href="legal-terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
         </footer>
 
         <!-- Sticky mobile CTA -->

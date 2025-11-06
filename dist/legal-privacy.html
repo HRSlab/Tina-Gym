@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Form&amp;Function Studio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B5CF6',
+                        'primary-dark': '#7C3AED',
+                        accent: '#F87171',
+                        light: '#F9FAFB',
+                        'light-alt': '#F3F4F6',
+                        dark: '#1F2937',
+                        'dark-deep': '#111827',
+                        muted: '#6B7280',
+                    },
+                    fontFamily: {
+                        display: ['Poppins', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+
+    <style>
+        :root {
+            --color-primary: #8B5CF6;
+            --color-light: #F9FAFB;
+            --color-light-alt: #F3F4F6;
+            --color-dark: #1F2937;
+            --color-muted: #6B7280;
+        }
+        body {
+            background-color: var(--color-light);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+        }
+        
+        /* Header, Footer, and Animation styles are consistent with other pages */
+        .main-header {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+        }
+        .main-nav a .underline-anim {
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .main-nav a:hover .underline-anim {
+            transform: scaleX(1);
+        }
+        .page-hero-simple {
+            padding-top: 10rem;
+            padding-bottom: 4rem;
+            background-color: var(--color-light-alt);
+            text-align: center;
+        }
+        .page-hero-simple h1 {
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+        }
+        
+        /* Styles for the legal text content */
+        .legal-content {
+            padding-top: 4rem;
+            padding-bottom: 6rem;
+        }
+        .legal-text-container {
+            max-width: 800px; /* Optimal width for reading */
+            margin: 0 auto;
+        }
+        .legal-text-container h2 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.5rem;
+            color: var(--color-dark);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 0.5rem;
+        }
+        .legal-text-container p, .legal-text-container li {
+            color: var(--color-muted);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
+        .legal-text-container ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+        .legal-text-container a {
+            color: var(--color-primary);
+            text-decoration: underline;
+        }
+        .legal-text-container a:hover {
+            color: var(--color-accent);
+        }
+        
+        .main-footer {
+            background-color: var(--color-dark);
+        }
+        .footer-link {
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .will-animate {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+    </style>
+</head>
+<body class="bg-light font-body">
+
+    <!-- Header Component (scrolled state by default on this page) -->
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 py-3 bg-light/85 backdrop-blur-lg shadow-md">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="logo font-display text-2xl font-bold text-dark transition-transform hover:scale-105">
+                Form&amp;Function Studio
+            </a>
+            <nav class="main-nav hidden md:flex items-center space-x-8">
+                <a href="services.html" class="font-medium text-dark relative"><span>Services</span><span class="underline-anim absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span></a>
+                <a href="about.html" class="font-medium text-dark relative"><span>About</span><span class="underline-anim absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span></a>
+                <a href="gallery.html" class="font-medium text-dark relative"><span>The Studio</span><span class="underline-anim absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span></a>
+                <a href="contact.html" class="font-medium text-dark relative"><span>Contact</span><span class="underline-anim absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span></a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="contact.html" class="hidden md:inline-block bg-primary text-white font-display font-semibold px-5 py-2 rounded-lg hover:bg-primary-dark transition-transform hover:-translate-y-0.5 shadow-sm hover:shadow-lg">
+                    Book a Session
+                </a>
+                <button id="mobile-menu-toggle" class="mobile-menu-button md:hidden z-50 p-2" aria-label="Toggle Menu">
+                    <div class="w-7 h-7 flex flex-col justify-around">
+                        <span id="bar1" class="block w-full h-0.5 bg-dark rounded-full transition-transform duration-300 ease-in-out"></span>
+                        <span id="bar2" class="block w-full h-0.5 bg-dark rounded-full transition-opacity duration-300 ease-in-out"></span>
+                        <span id="bar3" class="block w-full h-0.5 bg-dark rounded-full transition-transform duration-300 ease-in-out"></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <div id="mobile-nav-panel" class="fixed top-0 left-0 w-full h-full bg-light z-40 transform -translate-x-full transition-transform duration-300 ease-in-out">
+        <nav class="h-full flex flex-col justify-center items-center space-y-8">
+            <a href="services.html" class="font-display text-3xl text-dark">Services</a>
+            <a href="about.html" class="font-display text-3xl text-dark">About</a>
+            <a href="gallery.html" class="font-display text-3xl text-dark">The Studio</a>
+            <a href="contact.html" class="font-display text-3xl text-dark">Contact</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- Page Hero Component -->
+        <section class="page-hero-simple">
+            <div class="container mx-auto px-6">
+                <h1 class="font-display text-dark">Privacy Policy</h1>
+            </div>
+        </section>
+
+        <!-- Privacy Policy Content -->
+        <section class="legal-content">
+            <div class="legal-text-container px-6">
+                <p>Form &amp; Function Fitness is a product of Form &amp; Function Fitness. (“Form &amp; Function Fitness”). Form &amp; Function Fitness respects your privacy and is committed to protecting the personal information that you provide to us. This statement explains our policies and practices regarding the use and disclosure of your personal information by Form &amp; Function Fitness. Please note that Form &amp; Function Fitness reviews and updates this Privacy Policy occasionally as needed without notice. Therefore, you should review this policy's terms periodically to ensure that you are aware of how Form &amp; Function Fitness collects and uses personal information. Using our website, you consent to the collection and use of your personal information by Form &amp; Function Fitness, as explained below.</p>
+
+                <h2>Personal Information</h2>
+                <p>You have complete control over your personal information. You can visit our website without providing us with any personal information. However, there are instances where we must have your personal information for us to grant you access to our protected and secured sites. This information may include registration data (your name, address, email address, phone number, title, etc.), information request data, and response data (“user Information”). When you receive your confirmation email or any email from the list server, you will be given instructions on removing yourself from the list.</p>
+                <p>We may collect personal information through:</p>
+                <ul>
+                    <li>Forms: Including order forms, sign-up forms, and contact forms.</li>
+                    <li>Email: Customer service inquiries, complaints, etc.</li>
+                    <li>Cookies: Including on your website and Facebook Page.</li>
+                </ul>
+                <p>Our lead generation ads may be used for various purposes, including newsletter/marketing/blog signups (email address, name), new member outreach (email address, name), and possible professional partnership or franchise outreach (email address, name). We may collect this information through our website and social media platforms and use third-party cookies to aid in this (described in detail below).</p>
+
+                <h2>Use of User Information</h2>
+                <p>We intend to use such information to support your relationship with Form &amp; Function Fitness by designing website content suitable for your needs and alerting you to new product and service offerings as they become available. This user Information may be retained by Form &amp; Function Fitness to verify compliance with the agreement between Form &amp; Function Fitness and you, to keep track of the domains from which people visit us, to create a user profile to better serve you or to simply contact you either electronically or otherwise. If you decide that we should not use your personal user Information to contact you, please let us know, and we will not use that information for such purpose. However, please do not submit any user Information if you are less than 18 years of age.</p>
+
+                <h2>Disclosure of user Information</h2>
+                <p>Form &amp; Function Fitness does not sell, trade, or transfer user Information to third parties. We also disclose user Information if: we have your consent; we need to share it to provide you with the products and/or services you requested; we respond to a court order or you violate our Terms of Use. You may separately agree to provide your personal information to third parties that provide content for Form &amp; Function Fitness offerings, to access and/or use their products and/or services. If you agree to provide such information to these third parties, then your personal information will be subject to their privacy policies.</p>
+                <p>We use Remarketing with Google Analytics, Google Display Network Impression Reporting, and Google Analytics Demographics and Interests Reporting to advertise online. Websites and third-party vendors, including Google, use first-party cookies (such as the Google Analytics cookie) and third-party cookies (such as the DoubleClick cookie) together to inform, optimize, and serve ads based on someone’s past visits to a website. Our website also uses third-party vendors, including Google and third-party cookies (such as the DoubleClick cookie) together to report how your ad impressions, other uses of ad services, and interactions with these ad impressions and ad services are related to visits to our website. To opt-out of the Google Analytics Advertising Features, you can use this tool for the web: <a href="https://tools.google.com/dlpage/gaoptout/" target="_blank" rel="noopener noreferrer">https://tools.google.com/dlpage/gaoptout/</a></p>
+
+                <h2>Accuracy and Security</h2>
+                <p>The accuracy and security of the user Information are important to Form &amp; Function Fitness. Currently, you may review and request updates to your User Information retained by contacting Form &amp; Function Fitness. If you contact us to correct your User Information, we will attempt to correct such inaccuracies in a timely manner. Form &amp; Function Fitness is concerned with the security of your user Information and is committed to taking reasonable steps to protect it from unauthorized access and use of that personal information. To that end, we have put in place the appropriate physical, electronic, and managerial policies and procedures to secure your personal User Information. We also implement procedures to maintain accurate, complete, and current user information.</p>
+
+                <h2>Usernames and Passwords</h2>
+                <p>Access to certain content on our website may be allowed under an agreement between you and Form &amp; Function Fitness and will require a username and/or password. In some cases, failure to provide personal information may prevent you from accessing certain Form &amp; Function Fitness website(s) containing certain confidential information, products, services, or promotional offers (“Form &amp; Function Fitness Offerings”). By accessing and using our protected and secured website(s), you agree to maintain the confidentiality of the username and password you selected to access such site(s) and consent to our Terms of Use (<a href="https(://formandfunctions.studio/terms-of-service" target="_blank" rel="noopener noreferrer">https://formandfunctions.studio/terms-of-service</a>).</p>
+
+                <h2>Cookies</h2>
+                <p>Form &amp; Function Fitness uses “cookies”. A cookie is a small data file that a website can transfer to a visitor’s hard drive to keep records of the visits to such a site. A cookie contains information such as your username and password, which helps us recognize your visited pages and improve future visits. Still, the only personal information a cookie can contain is the information that you provide yourself. A cookie cannot read data from your hard drive or read cookie files created by other sites. Information stored in cookies may be encrypted. However, we do not store your credit card number in cookies. If you prefer not to accept a cookie, you can set your web browser to warn you before accepting cookies or refuse all cookies by turning them off in your web browser. However, access to some of our secured website(s) may require cookies, so you must enable only cookies that get sent back to the originating server. Otherwise, you can still access most of the features on our website, even without accepting a cookie.</p>
+
+                <h2>Facebook Pixel Notice</h2>
+                <p>With your permission, our website utilizes the Facebook Pixel service of Facebook Inc, 1601 S. California Ave, Palo Alto, CA 94304, USA (“Facebook”). This tool allows us to follow the actions of users after they are redirected to a provider’s website by clicking on a Facebook advertisement. Thus, we can record the efficacy of Facebook advertisements for statistical and market research purposes. Using this data also allows us to improve our advertising for a better experience for the users and also retarget you with further advertising on Facebook and the use of Custom Audiences. You can find more information about and revoke your permission here: <a href="https://www.facebook.com/ads/website_custom_audiences/" target="_blank" rel="noopener noreferrer">https://www.facebook.com/ads/website_custom_audiences/</a></p>
+                <p>However, the collected data are saved and processed by Facebook. We are informing you on this matter according to our current information. Facebook is able to connect the data with your Facebook account and use the data for their own advertising purposes in accordance with Facebook’s Data Use Policy found under: <a href="https://www.facebook.com/about/privacy/" target="_blank" rel="noopener noreferrer">https://www.facebook.com/about/privacy/</a> Facebook Pixel Tracking allows Facebook and its partners to show you advertisements on and outside Facebook. In addition, a cookie will be saved onto your computer for these purposes.</p>
+
+                <h2>External Links</h2>
+                <p>Form &amp; Function Fitness website provides links to other third-party websites. Even if the third party is affiliated with Form &amp; Function Fitness through a business partnership or otherwise, Form &amp; Function Fitness is not responsible for the privacy policies or practices or the content of such external links. These links are provided to you for convenience purposes only, and you access them at your own risk.</p>
+
+                <h2>Terms of Use</h2>
+                <p>Please also see our Terms of Service (<a href="https://formandfunctions.studio/terms-of-service" target="_blank" rel="noopener noreferrer">https://formandfunctions.studio/terms-of-service</a>), which describes the restrictions, disclaimers, indemnification, and limitation of liability governing the use of the entire Form &amp; Function Fitness website.</p>
+                <p>If you have questions, please contact us at <a href="https://formandfunctions.studio/" target="_blank" rel="noopener noreferrer">https://formandfunctions.studio/</a></p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Component -->
+    <footer class="main-footer bg-dark content-section py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <h3 class="font-display text-2xl text-white">Form&amp;Function Studio</h3>
+                    <p class="text-muted mt-4">&copy; <span id="year"></span> | Fort Mohave, AZ</p>
+                </div>
+                <div>
+                    <h4 class="font-display text-lg text-white">Location</h4>
+                    <address class="text-muted mt-4 not-italic">
+                        5810 STE A-1 South HWY 95<br>Fort Mohave, AZ 86426
+                    </address>
+                </div>
+                <div>
+                    <h4 class="font-display text-lg text-white">Get In Touch</h4>
+                     <a href="mailto:tina@formandfunction.com" class="footer-link text-primary hover:text-accent mt-4 inline-block">tina@formandfunction.com</a>
+                </div>
+            </div>
+
+            <!-- Legal Links Section -->
+            <div class="mt-12 pt-8 border-t border-gray-700 text-center">
+                <a href="legal-privacy.html" class="text-sm text-primary hover:text-accent transition-colors duration-200 mx-3">Privacy Policy</a>
+                <span class="text-muted">|</span>
+                <a href="legal-terms.html" class="text-sm text-muted hover:text-primary transition-colors duration-200 mx-3">Terms &amp; Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Embedded JavaScript -->
+    <script>
+        // --- HEADER LOGIC ---
+        function initializeHeader() {
+            const header = document.getElementById('main-header');
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileNavPanel = document.getElementById('mobile-nav-panel');
+
+            // Set initial state for mobile nav
+            mobileNavPanel.classList.add('-translate-x-full'); // Start hidden off-screen
+
+            // This page has a light header by default, so no scroll logic is needed
+            // to change text color, only to add the shadow.
+             window.addEventListener('scroll', () => {
+                const isScrolled = window.scrollY > 20;
+                header.classList.toggle('scrolled', isScrolled);
+                header.classList.toggle('bg-light/85', isScrolled);
+                header.classList.toggle('backdrop-blur-lg', isScrolled);
+                header.classList.toggle('shadow-md', isScrolled);
+                header.classList.toggle('py-3', isScrolled);
+                header.classList.toggle('py-5', !isScrolled);
+            });
+
+            // Mobile menu toggle logic
+            mobileMenuToggle.addEventListener('click', () => {
+                const isOpen = mobileMenuToggle.classList.contains('open');
+                mobileMenuToggle.classList.toggle('open', !isOpen);
+                mobileNavPanel.classList.toggle('translate-x-full', isOpen);
+                mobileNavPanel.classList.toggle('-translate-x-full', !isOpen);
+                document.body.style.overflow = isOpen ? '' : 'hidden';
+
+                const bar1 = document.getElementById('bar1');
+                const bar2 = document.getElementById('bar2');
+                const bar3 = document.getElementById('bar3');
+                bar1.classList.toggle('rotate-45', !isOpen);
+                bar1.classList.toggle('translate-y-[9px]', !isOpen);
+                bar2.classList.toggle('opacity-0', !isOpen);
+                bar3.classList.toggle('-rotate-45', !isOpen);
+                bar3.classList.toggle('-translate-y-[9px]', !isOpen);
+            });
+
+            mobileNavPanel.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                     if (mobileMenuToggle.classList.contains('open')) {
+                        mobileMenuToggle.click();
+                    }
+                });
+            });
+        }
+
+        // --- INITIALIZE EVERYTHING ---
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('year').textContent = new Date().getFullYear();
+            initializeHeader();
+        });
+    </script>
+</body>
+</html>

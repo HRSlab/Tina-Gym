@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms &amp; Conditions | Form&amp;Function Studio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B5CF6',
+                        'primary-dark': '#7C3AED',
+                        accent: '#F87171',
+                        light: '#F9FAFB',
+                        'light-alt': '#F3F4F6',
+                        dark: '#1F2937',
+                        'dark-deep': '#111827',
+                        muted: '#6B7280',
+                    },
+                    fontFamily: {
+                        display: ['Poppins', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+
+    <style>
+        :root {
+            --color-primary: #8B5CF6;
+            --color-light: #F9FAFB;
+            --color-light-alt: #F3F4F6;
+            --color-dark: #1F2937;
+            --color-muted: #6B7280;
+        }
+        body {
+            background-color: var(--color-light);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+        }
+        
+        /* Header, Footer, and Animation styles are consistent with other pages */
+        .main-header {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+        }
+        .main-nav a .underline-anim {
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .main-nav a:hover .underline-anim {
+            transform: scaleX(1);
+        }
+        .page-hero-simple {
+            padding-top: 10rem;
+            padding-bottom: 4rem;
+            background-color: var(--color-light-alt);
+            text-align: center;
+        }
+        .page-hero-simple h1 {
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+        }
+        
+        /* Styles for the legal text content */
+        .legal-content {
+            padding-top: 4rem;
+            padding-bottom: 6rem;
+        }
+        .legal-text-container {
+            max-width: 800px; /* Optimal width for reading */
+            margin: 0 auto;
+        }
+        .legal-text-container h2 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.5rem;
+            color: var(--color-dark);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 0.5rem;
+        }
+        .legal-text-container p, .legal-text-container li {
+            color: var(--color-muted);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
+        .legal-text-container ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+        .legal-text-container a {
+            color: var(--color-primary);
+            text-decoration: underline;
+        }
+        .legal-text-container a:hover {
+            color: var(--color-accent);
+        }
+        
+        .main-footer {
+            background-color: var(--color-dark);
+        }
+        .footer-link {
+            text-decoration: none;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="bg-light font-body">
+
+    <!-- Header Component (scrolled state by default on this page) -->
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 py-3 bg-light/85 backdrop-blur-lg shadow-md">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="logo font-display text-2xl font-bold text-dark transition-transform hover:scale-105">
+                Form&amp;Function Studio
+            </a>
+            <nav class="main-nav hidden md:flex items-center space-x-8">
+                <a href="services.html" class="font-medium text-dark relative"><span>Services</span><span class="underline-anim absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span></a>
+                <a href="about.html" class="font-medium text-dark relative"><span>About</span><span class="underline-anim absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span></a>
+                <a href="gallery.html" class="font-medium text-dark relative"><span>The Studio</span><span class="underline-anim absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span></a>
+                <a href="contact.html" class="font-medium text-dark relative"><span>Contact</span><span class="underline-anim absolute bottom-0 left-0 w-full h-0.5 bg-primary"></span></a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="contact.html" class="hidden md:inline-block bg-primary text-white font-display font-semibold px-5 py-2 rounded-lg hover:bg-primary-dark transition-transform hover:-translate-y-0.5 shadow-sm hover:shadow-lg">
+                    Book a Session
+                </a>
+                <button id="mobile-menu-toggle" class="mobile-menu-button md:hidden z-50 p-2" aria-label="Toggle Menu">
+                    <div class="w-7 h-7 flex flex-col justify-around">
+                        <span id="bar1" class="block w-full h-0.5 bg-dark rounded-full transition-transform duration-300 ease-in-out"></span>
+                        <span id="bar2" class="block w-full h-0.5 bg-dark rounded-full transition-opacity duration-300 ease-in-out"></span>
+                        <span id="bar3" class="block w-full h-0.5 bg-dark rounded-full transition-transform duration-300 ease-in-out"></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <div id="mobile-nav-panel" class="fixed top-0 left-0 w-full h-full bg-light z-40 transform -translate-x-full transition-transform duration-300 ease-in-out">
+        <nav class="h-full flex flex-col justify-center items-center space-y-8">
+            <a href="services.html" class="font-display text-3xl text-dark">Services</a>
+            <a href="about.html" class="font-display text-3xl text-dark">About</a>
+            <a href="gallery.html" class="font-display text-3xl text-dark">The Studio</a>
+            <a href="contact.html" class="font-display text-3xl text-dark">Contact</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- Page Hero Component -->
+        <section class="page-hero-simple">
+            <div class="container mx-auto px-6">
+                <h1 class="font-display text-dark">Terms &amp; Conditions</h1>
+            </div>
+        </section>
+
+        <!-- Terms & Conditions Content -->
+        <section class="legal-content">
+            <div class="legal-text-container px-6">
+                <p><strong>Last Updated: November 6, 2025</strong></p>
+                <p>Please read these Terms and Conditions ("Terms", "Terms and Conditions") carefully before using the https://formandfunctions.studio/ website (the "Service") operated by Form &amp; Function Fitness (“us”, “we”, or “our”).</p>
+                <p>Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, and others who access or use the Service. By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service.</p>
+
+                <h2>Health &amp; Medical Disclaimer</h2>
+                <p>The information provided on this website, including all text, graphics, images, and other material, is for informational purposes only and is not intended as a substitute for professional medical advice, diagnosis, or treatment. Form &amp; Function Fitness offers fitness and wellness services and is not a medical organization.</p>
+                <p>You should always consult with a qualified healthcare professional before beginning any new fitness program, diet, or wellness regimen, especially if you have any pre-existing health conditions. Never disregard professional medical advice or delay in seeking it because of something you have read on this website. Reliance on any information provided by this website is solely at your own risk.</p>
+                <p>Engaging in any exercise program or physical activity involves a risk of injury. By participating in personal training, massage, or any other services offered by Form &amp; Function Fitness, you agree that you are doing so voluntarily and assume all risk of injury to yourself.</p>
+
+                <h2>Use of the Website</h2>
+                <p>You agree to use the Service for lawful purposes only. You are prohibited from using the Service to post or transmit any material that is threatening, libelous, defamatory, obscene, scandalous, inflammatory, pornographic, or profane, or any material that could constitute or encourage conduct that would be considered a criminal offense, give rise to civil liability, or otherwise violate any law.</p>
+
+                <h2>Intellectual Property</h2>
+                <p>The Service and its original content, features, and functionality are and will remain the exclusive property of Form &amp; Function Fitness and its licensors. The Service is protected by copyright, trademark, and other laws of both the United States and foreign countries. Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of Form &amp; Function Fitness.</p>
+
+                <h2>Links to Other Web Sites</h2>
+                <p>Our Service may contain links to third-party web sites or services that are not owned or controlled by Form &amp; Function Fitness.</p>
+                <p>Form &amp; Function Fitness has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third-party web sites or services. You further acknowledge and agree that Form &amp; Function Fitness shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such web sites or services.</p>
+
+                <h2>Limitation of Liability</h2>
+                <p>In no event shall Form &amp; Function Fitness, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or inability to access or use the Service; (ii) any conduct or content of any third party on the Service; (iii) any content obtained from the Service; and (iv) unauthorized access, use or alteration of your transmissions or content, whether based on warranty, contract, tort (including negligence) or any other legal theory, whether or not we have been informed of the possibility of such damage, and even if a remedy set forth herein is found to have failed of its essential purpose.</p>
+
+                <h2>Changes to Terms</h2>
+                <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. What constitutes a material change will be determined at our sole discretion. By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms.</p>
+
+                <h2>Governing Law</h2>
+                <p>These Terms shall be governed and construed in accordance with the laws of the State of Arizona, United States, without regard to its conflict of law provisions.</p>
+
+                <h2>Contact Us</h2>
+                <p>If you have any questions about these Terms, please <a href="contact.html">contact us</a>.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Component -->
+    <footer class="main-footer bg-dark content-section py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <h3 class="font-display text-2xl text-white">Form&amp;Function Studio</h3>
+                    <p class="text-muted mt-4">&copy; <span id="year"></span> | Fort Mohave, AZ</p>
+                </div>
+                <div>
+                    <h4 class="font-display text-lg text-white">Location</h4>
+                    <address class="text-muted mt-4 not-italic">
+                        5810 STE A-1 South HWY 95<br>Fort Mohave, AZ 86426
+                    </address>
+                </div>
+                <div>
+                    <h4 class="font-display text-lg text-white">Get In Touch</h4>
+                     <a href="mailto:tina@formandfunction.com" class="footer-link text-primary hover:text-accent mt-4 inline-block">tina@formandfunction.com</a>
+                </div>
+            </div>
+
+            <!-- Legal Links Section -->
+            <div class="mt-12 pt-8 border-t border-gray-700 text-center">
+                <a href="legal-privacy.html" class="text-sm text-muted hover:text-primary transition-colors duration-200 mx-3">Privacy Policy</a>
+                <span class="text-muted">|</span>
+                <a href="leagal-terms.html" class="text-sm text-primary hover:text-accent transition-colors duration-200 mx-3">Terms &amp; Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Embedded JavaScript -->
+    <script>
+        // --- HEADER LOGIC ---
+        function initializeHeader() {
+            const header = document.getElementById('main-header');
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileNavPanel = document.getElementById('mobile-nav-panel');
+
+            // Set initial state for mobile nav
+            if (mobileNavPanel) {
+                mobileNavPanel.classList.add('-translate-x-full'); // Start hidden off-screen
+            }
+
+             window.addEventListener('scroll', () => {
+                if (!header) return;
+                const isScrolled = window.scrollY > 20;
+                header.classList.toggle('scrolled', isScrolled);
+                header.classList.toggle('bg-light/85', isScrolled);
+                header.classList.toggle('backdrop-blur-lg', isScrolled);
+                header.classList.toggle('shadow-md', isScrolled);
+                header.classList.toggle('py-3', isScrolled);
+                header.classList.toggle('py-5', !isScrolled);
+            });
+
+            // Mobile menu toggle logic
+            if (mobileMenuToggle && mobileNavPanel) {
+                mobileMenuToggle.addEventListener('click', () => {
+                    const isOpen = mobileMenuToggle.classList.contains('open');
+                    mobileMenuToggle.classList.toggle('open', !isOpen);
+                    mobileNavPanel.classList.toggle('translate-x-full', isOpen);
+                    mobileNavPanel.classList.toggle('-translate-x-full', !isOpen);
+                    document.body.style.overflow = isOpen ? '' : 'hidden';
+
+                    const bar1 = document.getElementById('bar1');
+                    const bar2 = document.getElementById('bar2');
+                    const bar3 = document.getElementById('bar3');
+                    bar1.classList.toggle('rotate-45', !isOpen);
+                    bar1.classList.toggle('translate-y-[9px]', !isOpen);
+                    bar2.classList.toggle('opacity-0', !isOpen);
+                    bar3.classList.toggle('-rotate-45', !isOpen);
+                    bar3.classList.toggle('-translate-y-[9px]', !isOpen);
+                });
+            }
+
+            if (mobileNavPanel) {
+                mobileNavPanel.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                         if (mobileMenuToggle.classList.contains('open')) {
+                            mobileMenuToggle.click();
+                        }
+                    });
+                });
+            }
+        }
+
+        // --- INITIALIZE EVERYTHING ---
+        document.addEventListener('DOMContentLoaded', function () {
+            const yearEl = document.getElementById('year');
+            if (yearEl) {
+                yearEl.textContent = new Date().getFullYear();
+            }
+            initializeHeader();
+        });
+    </script>
+</body>
+</html>
